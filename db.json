@@ -1,0 +1,43 @@
+{
+  "projects": [
+    {
+      "name": "Aplicativo BusAPP",
+      "budget": "321321",
+      "category": {
+        "id": "4",
+        "name": "Agendamentos"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 1
+    },
+    {
+      "name": "Woofs - Aplicativo de Relacionamento",
+      "budget": "321321",
+      "category": {
+        "id": "4",
+        "name": "Agendamentos"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 2
+    },
+    {
+      "name": "ERP Clinica, Banho & Tosa ",
+      "budget": "1000",
+      "category": {
+        "id": "4",
+        "name": "Agendamentos"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 3
+    }
+  ],
+  "categories": [
+    {
+      "id": 4,
+      "name": "Agendamentos"
+    }
+  ]
+}
