@@ -2,7 +2,7 @@
   "projects": [
     {
       "name": "Aplicativo BusAPP",
-      "budget": "321321",
+      "budget": "15000",
       "category": {
         "id": "4",
         "name": "Agendamentos"
