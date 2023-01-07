@@ -1,7 +1,7 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Company from './components/pages/Company'
 import Home from './components/pages/Home'
-import NewProject from './components/pages/NewProject'
+import NewProject from './components/pages/NewClient'
 import Contact from './components/pages/Contact'
 import NavBar from './components/layout/NavBar'
 
@@ -21,7 +21,7 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="/contact" element={<Contact/>}/>
           <Route path="/company" element={<Company/>}/>
-          <Route path="/newproject" element={<NewProject/>}/>
+          <Route path="/newclient" element={<NewProject/>}/>
           <Route path="/projects" element={<Projects/>}/>
           <Route path="/project/:id" element={<Project/>}/>
           <Route path="*" element={<h1>404 - Not Found</h1>}/>

@@ -8,13 +8,13 @@
         "name": "Banho"
       },
       "id": 1,
-      "raca":{
+      "raca": {
         "id": 1,
         "name": "Ryan"
-        }
       }
+    }
   ],
-  "Pets":[
+  "Pets": [
     {
       "id": 1,
       "name": "Dulinho",
@@ -32,7 +32,10 @@
       "email": "",
       "telefone": "",
       "cpf": "",
-      "endereco" : ""
+      "endereco": ""
+    },
+    {
+      "id": 2
     }
   ],
   "categories": [
@@ -47,26 +50,26 @@
       "name": "Rotweiler"
     }
   ],
-  "date":[
+  "date": [
     {
       "id": 1,
       "date": "2018-01-01",
       "horario": [
         {
           "id": 1,
-           "horario": "08:00",
-           "disponivel": true
-         },
-         {
+          "horario": "08:00",
+          "disponivel": true
+        },
+        {
           "id": 2,
-            "horario": "09:00",
-            "disponivel": true
-         },
-         {
-            "id": 3,
-            "horario": "10:00",
-            "disponivel": true
-         }
+          "horario": "09:00",
+          "disponivel": true
+        },
+        {
+          "id": 3,
+          "horario": "10:00",
+          "disponivel": true
+        }
       ]
     }
   ]
