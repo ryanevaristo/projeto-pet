@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import {useState } from 'react'
 
 import styles from './ClientForm.module.css'
 import Input from '../form/Input'
@@ -15,18 +15,19 @@ function ClientForm({ handleSubmit, clientData, btnText}) {
     }
 
     function handleChange(e) {
-        setClient({...client, [e.target.name]: e.target.value})
-    }
+        setClient({ ...client, [e.target.name]: e.target.value })
+      }
 
     return (
         <form className={styles.form} onSubmit={submit}>
            <Input
+                
                 type="text"
                 text="Nome do Cliente"
-                name="nome"
+                name="name"
                 placeholder="Insira o nome do Cliente"
-                value={client.nome}
-                onChange={handleChange}
+                value={client.name}
+                handleOnChange={handleChange}
             />
             <Input
                 type="text"
@@ -34,7 +35,7 @@ function ClientForm({ handleSubmit, clientData, btnText}) {
                 name="cpf"
                 placeholder={"000.000.000-00"}
                 value={client.cpf}
-                onChange={handleChange}
+                handleOnChange={handleChange}
             
             />
             <Input
@@ -43,7 +44,7 @@ function ClientForm({ handleSubmit, clientData, btnText}) {
                 name="email"
                 placeholder={"exemplo@gmail.com"}
                 value={client.email}
-                onChange={handleChange}
+                handleOnChange={handleChange}
             />
             <Input
                 type="text"
@@ -51,7 +52,7 @@ function ClientForm({ handleSubmit, clientData, btnText}) {
                 name="telefone"
                 placeholder={"(00) 00000-0000"}
                 value={client.telefone}
-                onChange={handleChange}
+                handleOnChange={handleChange}
             />
             <Input
                 type="text"
@@ -59,7 +60,7 @@ function ClientForm({ handleSubmit, clientData, btnText}) {
                 name="endereco"
                 placeholder={"Rua, Número, Bairro, Cidade, Estado"}
                 value={client.endereco}
-                onChange={handleChange}
+                handleOnChange={handleChange}
             />
             
             

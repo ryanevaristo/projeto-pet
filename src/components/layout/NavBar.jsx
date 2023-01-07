@@ -12,11 +12,10 @@ function NavBar() {
                 </Link>
                 <ul className={styles.list}>
                 <li className={styles.item}><Link to="/">Home</Link></li>
-                <li className={styles.item}><Link to="/contact">Contato</Link></li>
-                <li className={styles.item}><Link to={"/company"}>Empresa</Link></li>
-                <li className={styles.item}><Link to={"/projects"}>Meus Clientes</Link></li>
-                <li className={styles.item}><Link to={"/newclient"}>Novo Cliente</Link></li>
-                <li className={styles.item}><Link to={"/newpet"}>Novo Pet</Link></li>
+                <li className={styles.item}><Link to={"/clients"}>Meus Clientes</Link></li>
+                <li className={styles.item}><Link to={"/clients/new"}>Novo Cliente</Link></li>
+                <li className={styles.item}><Link to={"/pets"}>Meus Pets</Link></li>
+                <li className={styles.item}><Link to={"/pets/new"}>Novo Pet</Link></li>
 
                 </ul>
             </Container>

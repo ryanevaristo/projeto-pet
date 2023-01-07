@@ -1,9 +1,9 @@
-import styles from './AnimalForm.module.css'
+import styles from './PetForm.module.css'
 import { useState, useEffect } from 'react';
 import Select from '../form/Select';
 import SubmitButton from '../form/SubmitButton';
 import Input from '../form/Input';
-function AnimalForm({ handleSubmit, animalData, btnText}) {
+function PetForm({ handleSubmit, animalData, btnText}) {
     const [animal , setAnimal] = useState(animalData || {})
     const [raca, setRaca] = useState([])
     const [dono, setDono] = useState([])
@@ -22,7 +22,9 @@ function AnimalForm({ handleSubmit, animalData, btnText}) {
     }).
     catch((error) => console.log(error));
     },[])
+    
     // GET DONOS
+
     useEffect(() =>{
         fetch("http://localhost:5000/Donos",
     {
@@ -92,4 +94,4 @@ function AnimalForm({ handleSubmit, animalData, btnText}) {
 
 }
 
-export default AnimalForm;
+export default PetForm;

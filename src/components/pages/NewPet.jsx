@@ -1,11 +1,8 @@
 import { useNavigate } from 'react-router-dom'
-import AnimalForm from '../client/AnimalForm'
+import PetForm from '../pet/PetForm'
+import styles from './NewPet.module.css'
 
-import ProjectForm from '../project/ProjectForm'
-
-import styles from './NewAnimal.module.css'
-
-function NewAnimal() {
+function NewPet() {
   const navigate = useNavigate()
 
   function createPost(project) {
@@ -28,9 +25,9 @@ function NewAnimal() {
     <div className={styles.newproject_container}>
       <h1>Adicione um novo Pet</h1>
       <br/>
-      <AnimalForm handleSubmit={createPost} btnText="Adicionar novo Pet" />
+      <PetForm handleSubmit={createPost} btnText="Adicionar novo Pet" />
     </div>
   )
 }
 
-export default NewAnimal
+export default NewPet

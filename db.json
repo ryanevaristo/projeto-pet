@@ -1,16 +1,11 @@
 {
   "projects": [
     {
-      "name": "Dulinho",
+      "name": "hurion",
       "value": "50",
       "category": {
         "id": "4",
         "name": "Banho"
-      },
-      "id": 1,
-      "raca": {
-        "id": 1,
-        "name": "Ryan"
       }
     }
   ],
@@ -18,7 +13,7 @@
     {
       "id": 1,
       "name": "Dulinho",
-      "tamanho": "Grande",
+      "porte": "Grande",
       "raca": {
         "id": 1,
         "name": "Fila Brasileiro"
@@ -28,20 +23,19 @@
   "Donos": [
     {
       "id": 1,
-      "name": "Ryan",
-      "email": "",
-      "telefone": "",
-      "cpf": "",
-      "endereco": ""
-    },
-    {
-      "id": 2
+      "name": "RYAN EVARISTO DE LIMA",
+      "email": "ryan@hotmail.com",
+      "telefone": "(11) 99999-9999",
+      "cpf": " 123.456.789-00",
+      "endereco": "141 PRAÇA DA BANDEIRA"
     }
   ],
-  "categories": [
+  "services": [
     {
-      "id": 4,
-      "name": "Banho"
+      "id": 1,
+      "name": "Banho Pequeno",
+      "value": "35",
+      "time": "30 minutos"
     }
   ],
   "Racas": [

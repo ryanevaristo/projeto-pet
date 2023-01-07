@@ -1,7 +1,7 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Company from './components/pages/Company'
 import Home from './components/pages/Home'
-import NewProject from './components/pages/NewClient'
+import NewClient from './components/pages/NewClient'
 import Contact from './components/pages/Contact'
 import NavBar from './components/layout/NavBar'
 
@@ -9,7 +9,11 @@ import Container from './components/layout/Container'
 import Projects from './components/pages/Projects'
 import Footer from './components/layout/Footer'
 import Project from './components/pages/Project'
-import NewAnimal from './components/pages/NewAnimal'
+import NewPet from './components/pages/NewPet'
+import Clients from './components/pages/Clients.'
+import Client from './components/client/Client'
+import Pets from './components/pages/Pets'
+
 function App() {
   return ( 
 
@@ -21,11 +25,14 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="/contact" element={<Contact/>}/>
           <Route path="/company" element={<Company/>}/>
-          <Route path="/newclient" element={<NewProject/>}/>
+          <Route path="/clients/new" element={<NewClient/>}/>
+          <Route path="/clients" element={<Clients/>}/>
+          <Route path="/client/:id" element={<Client/>}/>
           <Route path="/projects" element={<Projects/>}/>
           <Route path="/project/:id" element={<Project/>}/>
           <Route path="*" element={<h1>404 - Not Found</h1>}/>
-          <Route path="/newpet" element={<NewAnimal/>}/>
+          <Route path="/pets" element={<Pets/>}/>
+          <Route path="/pets/new" element={<NewPet/>}/>
         </Routes>
         
       </Container>
