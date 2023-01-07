@@ -8,6 +8,7 @@ function ProjectForm({ handleSubmit, projectData, btnText}) {
 
     const [categories, setCategories] = useState([])
     const [project , setProject] = useState(projectData || {})
+    const [raca, setRaca] = useState([])
 
     useEffect(() =>{
             fetch("http://localhost:5000/categories",
@@ -22,6 +23,21 @@ function ProjectForm({ handleSubmit, projectData, btnText}) {
             setCategories(data)
         })
         .catch((error) => console.log(error))
+    }, [])
+
+    useEffect(() =>{
+        fetch("http://localhost:5000/Racas",
+    {
+        method: "GET",
+        headers:{
+            'Content-type': 'aplication/json'
+        }
+    }
+    ).then((resp) => resp.json())
+    .then((data) => {
+        setRaca(data)
+    })
+    .catch((error) => console.log(error))
     }, [])
 
     const submit = (e) => {
@@ -40,27 +56,48 @@ function ProjectForm({ handleSubmit, projectData, btnText}) {
         }})
         
     }
+    function handleRaca(e) {
+        setProject({...project, raca: {
+            id: e.target.value,
+            name: e.target.options[e.target.selectedIndex].text
+        }})
+        
+    }
 
     return ( 
         <form onSubmit={submit} className={styles.form}>
             <Input
              type="text"
-             text="Nome do Projeto"
+             text="Nome do Pet"
              name="name"
-             placeholder="Insira o nome do Projeto"
+             placeholder="Insira o nome do Pet"
              handleOnChange={handleChange}
              value={project.name ? project.name : ""}
             />
+            <Select name="raca_id" 
+            text="Selecione uma Raça" 
+            options={raca}
+            handleOnChange={handleRaca}
+            value={project.raca ? project.raca.id : ''} />
+
             <Input
              type="number"
-             text="Orçamento do Projeto"
-             name="budget"
-             placeholder="Insira o orçamento do projeto"
+             text="Valor do Serviço"
+             name="value"
+             placeholder="Insira o valor do Serviço"
              handleOnChange={handleChange}
-             value={project.budget ? project.budget : ""}
+             value={project.value ? project.value : ""}
+            />
+            <Input
+             type="date"
+             text="data do Serviço"
+             name="date"
+             placeholder="Insira o dia do Serviço"
+             handleOnChange={handleChange}
+             value={project.date ? project.date : ""}
             />
             <Select name="category_id" 
-            text="Selecione a categoria" 
+            text="Selecione o tipo do Serviço" 
             options={categories}
             handleOnChange={handleCategory}
             value={project.category ? project.category.id : ''} />

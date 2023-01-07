@@ -9,6 +9,7 @@ import Container from './components/layout/Container'
 import Projects from './components/pages/Projects'
 import Footer from './components/layout/Footer'
 import Project from './components/pages/Project'
+import NewAnimal from './components/pages/NewAnimal'
 function App() {
   return ( 
 
@@ -23,6 +24,8 @@ function App() {
           <Route path="/newproject" element={<NewProject/>}/>
           <Route path="/projects" element={<Projects/>}/>
           <Route path="/project/:id" element={<Project/>}/>
+          <Route path="*" element={<h1>404 - Not Found</h1>}/>
+          <Route path="/newpet" element={<NewAnimal/>}/>
         </Routes>
         
       </Container>

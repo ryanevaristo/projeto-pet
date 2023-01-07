@@ -1,16 +1,17 @@
 import { useNavigate } from 'react-router-dom'
+import AnimalForm from '../client/AnimalForm'
 
 import ProjectForm from '../project/ProjectForm'
 
-import styles from './NewProject.module.css'
+import styles from './NewAnimal.module.css'
 
-function NewProject() {
+function NewAnimal() {
   const navigate = useNavigate()
 
   function createPost(project) {
     // initialize cost and services
 
-    fetch('http://localhost:5000/projects', {
+    fetch('http://localhost:5000/Pets', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -19,17 +20,17 @@ function NewProject() {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        navigate('/projects', { state: {message: 'Novo pet adicionado'} })
+        navigate('/Pets', { state: {message: 'Novo pet adicionado'} })
       })
   }
 
   return (
     <div className={styles.newproject_container}>
-      <h1>Novo horário</h1>
-      <p>Organize seus horários aqui.</p>
-      <ProjectForm handleSubmit={createPost} btnText="Criar Projeto" />
+      <h1>Adicione um novo Pet</h1>
+      <br/>
+      <AnimalForm handleSubmit={createPost} btnText="Adicionar novo Pet" />
     </div>
   )
 }
 
-export default NewProject
+export default NewAnimal

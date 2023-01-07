@@ -71,13 +71,10 @@ function Project() {
                             {!showProjectForm ? (
                                 <div className={styles.project_info}>
                                     <p>
-                                        <span>Categoria:</span> {project.category.name}
+                                        <span>Tipo de Serviço:</span> {project.category.name}
                                     </p>
                                     <p>
-                                        <span>Total de Orçamento:</span> {project.budget}
-                                    </p>
-                                    <p>
-                                        <span>Total Utilizado:</span> {project.cost}
+                                        <span>Valor Total:</span> {project.budget}
                                     </p>
                                 </div>
                             ) : (

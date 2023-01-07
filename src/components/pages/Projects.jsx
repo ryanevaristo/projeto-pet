@@ -2,6 +2,7 @@ import Message from "../layout/Message";
 import Container from '../layout/Container'
 import LinkButton from "./LinkButton";
 import ProjectCard from "../project/ProjectCard";
+import DayButton from "./DayButton";
 
 import { useLocation } from "react-router-dom";
 
@@ -51,7 +52,7 @@ function Projects() {
 
         }).then(resp => resp.json())
         .then(data => {
-            setProjects(projects.filter((project) => project.id != id))
+            setProjects(projects.filter((project) => project.id !== id))
             setProjectMsg('Projeto removido com sucesso!')
         })
         .cath(err => console.log(err))
@@ -61,8 +62,12 @@ function Projects() {
     return ( 
         <div className={styles.project_container}> 
             <div className={styles.title_container}>
-                <h1>Meus Projetos</h1>
-                <LinkButton to={'/newproject'} text={"Novo Projeto"}></LinkButton>
+                <h1>Agenda</h1>
+                <LinkButton to={'/newproject'} text={"Adicionar Horário"}></LinkButton>
+            </div>
+            <div className={styles.filter_container}>
+                <DayButton text={'Hoje'}/>  <DayButton text={'Amanhã'}/>  <DayButton text={'Quarta'}/> 
+                <DayButton text={'Quinta'}/> <DayButton text={'Sexta'}/> <input type="date" name="" id="" />
             </div>
             {message && <Message msg={message} type='success'/>}
             {projectMsg && <Message msg={projectMsg} type='success'/>}
@@ -80,7 +85,7 @@ function Projects() {
                 ))}
                 {!removeLoad && <Loading/>}
                 {removeLoad && projects.length === 0 && (
-                    <p>Sem projetos :(</p>
+                    <p>Sem Horários:(</p>
                 )}
             </Container>
            

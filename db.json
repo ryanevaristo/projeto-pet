@@ -1,43 +1,73 @@
 {
   "projects": [
     {
-      "name": "Aplicativo BusAPP",
-      "budget": "15000",
+      "name": "Dulinho",
+      "value": "50",
       "category": {
         "id": "4",
-        "name": "Agendamentos"
+        "name": "Banho"
       },
-      "cost": 0,
-      "services": [],
-      "id": 1
-    },
+      "id": 1,
+      "raca":{
+        "id": 1,
+        "name": "Ryan"
+        }
+      }
+  ],
+  "Pets":[
     {
-      "name": "Woofs - Aplicativo de Relacionamento",
-      "budget": "321321",
-      "category": {
-        "id": "4",
-        "name": "Agendamentos"
-      },
-      "cost": 0,
-      "services": [],
-      "id": 2
-    },
+      "id": 1,
+      "name": "Dulinho",
+      "tamanho": "Grande",
+      "raca": {
+        "id": 1,
+        "name": "Fila Brasileiro"
+      }
+    }
+  ],
+  "Donos": [
     {
-      "name": "ERP Clinica, Banho & Tosa ",
-      "budget": "1000",
-      "category": {
-        "id": "4",
-        "name": "Agendamentos"
-      },
-      "cost": 0,
-      "services": [],
-      "id": 3
+      "id": 1,
+      "name": "Ryan",
+      "email": "",
+      "telefone": "",
+      "cpf": "",
+      "endereco" : ""
     }
   ],
   "categories": [
     {
       "id": 4,
-      "name": "Agendamentos"
+      "name": "Banho"
+    }
+  ],
+  "Racas": [
+    {
+      "id": 1,
+      "name": "Rotweiler"
+    }
+  ],
+  "date":[
+    {
+      "id": 1,
+      "date": "2018-01-01",
+      "horario": [
+        {
+          "id": 1,
+           "horario": "08:00",
+           "disponivel": true
+         },
+         {
+          "id": 2,
+            "horario": "09:00",
+            "disponivel": true
+         },
+         {
+            "id": 3,
+            "horario": "10:00",
+            "disponivel": true
+         }
+      ]
     }
   ]
 }
