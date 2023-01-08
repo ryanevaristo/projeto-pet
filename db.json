@@ -34,8 +34,9 @@
     {
       "id": 1,
       "name": "Banho Pequeno",
-      "price": "35",
-      "time": "30 minutos"
+      "price": "50",
+      "executionTime": "30 minutos",
+      "description": "50dsadsadasdas"
     }
   ],
   "Racas": [

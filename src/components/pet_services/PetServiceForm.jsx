@@ -1,5 +1,5 @@
 import styles from "./PetServiceForm.module.css"
-import { useState, useEffect } from "react"
+import { useState} from "react"
 import SubmitButton from "../form/SubmitButton"
 import Input from "../form/Input"
 
@@ -31,9 +31,9 @@ function PetServiceForm({ handleSubmit, petServiceData, btnText }) {
             <Input
                 text={"Tempo de duração"}
                 type="text"
-                name="time"
+                name="executionTime"
                 placeholder="Exemplo: 30 minutos"
-                value={petService.time}
+                value={petService.executionTime}
                 handleOnChange={handleChange}
             />
             <Input

@@ -1,8 +1,8 @@
-import styles from "./PetServiceCard.module.css"
+import styles from "./FuncionarioCard.module.css"
 import { Link } from "react-router-dom";
 import {BsPencil, BsFillTrashFill} from 'react-icons/bs'
 
-function PetServiceCard({id, name, description, executionTime, value, handleRemove}) {
+function FuncionarioCard({id, name, endereco, phone, cpf, email, handleRemove}) {
     
         const remove = (e) => {
             e.preventDefault()
@@ -13,20 +13,20 @@ function PetServiceCard({id, name, description, executionTime, value, handleRemo
             <div className={styles.project_card}>
                 <h4>{name}</h4>
                 <p>
-                    <span>Descrição:</span> {description}
+                <span>Cliente:</span> {name}<span className={styles.number}>{cpf}</span>
+                
                 </p>
-
                 <p>
-                    <span>Tempo:</span> {executionTime}
+                    <span>Telefone:</span> {phone} <span className={styles.number}>{email}</span>
+
                 </p>
-
                 <p>
-                    <span>Valor:</span> {value}
+                    <span>Endereço: {endereco}</span>
                 </p>
     
                 <br />
                 <div className={styles.project_card_actions}>
-                    <Link to={`/petservices/${id}`}>
+                    <Link to={`/funcionario/${id}`}>
                         <BsPencil/> Editar
                     </Link>
                     <button onClick={remove}>
@@ -37,4 +37,4 @@ function PetServiceCard({id, name, description, executionTime, value, handleRemo
         );
     }
 
-export default PetServiceCard;
+export default FuncionarioCard;
