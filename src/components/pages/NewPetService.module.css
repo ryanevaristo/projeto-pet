@@ -1,0 +1,10 @@
+.newpetservice_container {
+    width: 450px;
+    margin: 0 auto;
+    padding: 3em;
+}
+
+
+.newpetservice_container p {
+    color: #7b7b7b;
+}

@@ -30,11 +30,11 @@
       "endereco": "141 PRAÇA DA BANDEIRA"
     }
   ],
-  "services": [
+  "petservices": [
     {
       "id": 1,
       "name": "Banho Pequeno",
-      "value": "35",
+      "price": "35",
       "time": "30 minutos"
     }
   ],

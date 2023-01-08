@@ -13,7 +13,8 @@ import NewPet from './components/pages/NewPet'
 import Clients from './components/pages/Clients.'
 import Client from './components/client/Client'
 import Pets from './components/pages/Pets'
-
+import NewPetService from './components/pages/NewPetService'
+import PetServices from './components/pages/PetServices'
 function App() {
   return ( 
 
@@ -33,6 +34,8 @@ function App() {
           <Route path="*" element={<h1>404 - Not Found</h1>}/>
           <Route path="/pets" element={<Pets/>}/>
           <Route path="/pets/new" element={<NewPet/>}/>
+          <Route path="/petservices" element={<PetServices/>}/>
+          <Route path='/petservices/new' element={<NewPetService/>}/>
         </Routes>
         
       </Container>
