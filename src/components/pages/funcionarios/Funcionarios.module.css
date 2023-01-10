@@ -1,0 +1,16 @@
+.project_container {
+    padding: 1.5em;
+}
+
+.title_container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+    align-items: center;
+
+}
+
+.filter_container {
+    display: flex;
+    justify-content: center;
+}

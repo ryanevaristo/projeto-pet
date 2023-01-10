@@ -16,6 +16,11 @@ import Pets from './components/pages/Pets'
 import NewPetService from './components/pages/NewPetService'
 import PetServices from './components/pages/PetServices'
 import PetService from './components/pages/PetService'
+import Funcionario from './components/pages/funcionarios/Funcionario'
+import Funcionarios from './components/pages/funcionarios/Funcionarios'
+import NewFuncionario from './components/pages/funcionarios/NewFuncionario'
+
+
 function App() {
   return ( 
 
@@ -38,6 +43,9 @@ function App() {
           <Route path="/petservices" element={<PetServices/>}/>
           <Route path='/petservices/new' element={<NewPetService/>}/>
           <Route path='/petservices/:id' element={<PetService/>}/>
+          <Route path='/funcionarios' element={<Funcionarios/>}/>
+          <Route path='/funcionarios/new' element={<NewFuncionario/>}/>
+          <Route path='/funcionario/:id' element={<Funcionario/>}/>
         </Routes>
         
       </Container>

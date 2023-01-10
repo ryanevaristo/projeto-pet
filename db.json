@@ -30,6 +30,17 @@
       "endereco": "141 PRAÇA DA BANDEIRA"
     }
   ],
+  "funcionarios": [
+    {
+      "id": 1,
+      "name": "LAIS EVARISTO DE LIMA",
+      "email": "LAIS@hotmail.com",
+      "telefone": "(11) 99999-9999",
+      "cpf": " 123.456.789-000",
+      "endereco": "141 PRAÇA DA BANDEIRA",
+      "comissao": "10%"
+    }
+  ],
   "petservices": [
     {
       "id": 1,

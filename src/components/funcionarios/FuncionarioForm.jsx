@@ -2,19 +2,20 @@ import styles from "./FuncionarioForm.module.css"
 import { useState} from "react"
 import SubmitButton from "../form/SubmitButton"
 import Input from "../form/Input"
+import Select from "../form/Select"
 
 function FuncionarioForm({ handleSubmit, FuncionarioData, btnText }) {
-    const [funcionario, setFuncionario] = useState(FuncionarioData || {})
+    const [func, setFuncionario] = useState(FuncionarioData || {})
 
 
 
     const submit = (e) => {
         e.preventDefault()
-        handleSubmit(funcionario)
+        handleSubmit(func)
     }
 
     function handleChange(e) {
-        setFuncionario({ ...funcionario, [e.target.name]: e.target.value })
+        setFuncionario({ ...func, [e.target.name]: e.target.value })
     }
 
     return (
@@ -24,7 +25,7 @@ function FuncionarioForm({ handleSubmit, FuncionarioData, btnText }) {
                 type="text"
                 name="name"
                 placeholder="Nome do funcionário"
-                value={funcionario.name}
+                value={func.name}
                 handleOnChange={handleChange}
             />
             
@@ -33,7 +34,26 @@ function FuncionarioForm({ handleSubmit, FuncionarioData, btnText }) {
                 type="text"
                 name="cpf"
                 placeholder="Exemplo: 000.000.000-00"
-                value={petService.cpf}
+                value={func.cpf}
+                handleOnChange={handleChange}
+            />
+            <Select
+                text="Cargo"
+                name="cargo"
+                value={func.cargo}
+                handleOnChange={handleChange}
+                options={[
+                    {id: 'G', name: 'Gerente'}, 
+                    {id: 'T', name: 'Tosador'},
+                    {id: 'O', name: 'Outro'}
+                ]}
+            />
+            <Input
+                type="text"
+                text="Comissão"
+                name="comissao"
+                placeholder={"Exemplo: 10%"}
+                value={func.comissao}
                 handleOnChange={handleChange}
             />
             <Input
@@ -41,7 +61,7 @@ function FuncionarioForm({ handleSubmit, FuncionarioData, btnText }) {
                 text="Email"
                 name="email"
                 placeholder={"exemplo@gmail.com"}
-                value={funcionario.email}
+                value={func.email}
                 handleOnChange={handleChange}
             />
             <Input
@@ -49,7 +69,7 @@ function FuncionarioForm({ handleSubmit, FuncionarioData, btnText }) {
                 text="Telefone"
                 name="telefone"
                 placeholder={"(00) 00000-0000"}
-                value={funcionario.telefone}
+                value={func.telefone}
                 handleOnChange={handleChange}
             />
             <Input
@@ -57,7 +77,7 @@ function FuncionarioForm({ handleSubmit, FuncionarioData, btnText }) {
                 text="Endereço"
                 name="endereco"
                 placeholder={"Rua, Número, Bairro, Cidade, Estado"}
-                value={funcionario.endereco}
+                value={func.endereco}
                 handleOnChange={handleChange}
             />
             <SubmitButton text={btnText} />
