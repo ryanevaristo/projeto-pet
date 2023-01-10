@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Container from "../layout/Container";
 import Message from "../layout/Message";
-import styles from "./Project.module.css";
+import styles from "./PetService.module.css";
 import PetServiceForm from "../pet_services/PetServiceForm";
 
 function PetService() {

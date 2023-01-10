@@ -1,10 +1,10 @@
-import Loading from '../layout/Loading'
+import Loading from '../../layout/Loading'
 import {useParams} from 'react-router-dom'
 import { useState, useEffect } from "react";
-import Container from '../layout/Container'
-import Message from '../layout/Message'
+import Container from '../../layout/Container'
+import Message from '../../layout/Message'
 import styles from './Project.module.css'
-import ProjectForm from '../project/ProjectForm'
+import ProjectForm from '../../scheduler/ProjectForm'
 function Project() {
     const {id} = useParams()
     
