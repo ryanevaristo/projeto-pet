@@ -1,6 +1,6 @@
 import Message from "../../layout/Message";
 import Container from '../../layout/Container'
-import LinkButton from "../LinkButton";
+import LinkButton from "../../layout/LinkButton";
 import SchedulerCard from "../../scheduler/SchedulerCard";
 import DayButton from "../../layout/DayButton";
 
@@ -9,12 +9,14 @@ import { useLocation } from "react-router-dom";
 import styles from './Scheduler.module.css'
 import { useState, useEffect } from "react";
 import Loading from "../../layout/Loading";
+import SubmitButton from "../../form/SubmitButton";
 
 function Scheduler() {
 
     const [scheduler, setScheduler] = useState([])
     const [removeLoad, setRemoveLoad] = useState(false)
     const [projectMsg, setSchedulerMsg] = useState('')
+    const [query , setQuery] = useState('')
 
     const location = useLocation()
     let message = ''
@@ -42,17 +44,64 @@ function Scheduler() {
 
     },[])
 
-    // reload page in 1 minute
+    const submit = (e) => {
+        e.preventDefault()
+        setQuery(e.target.date.value)
+           
+        
+    }
 
-
-    const reload = () => {
-        // reload page in 1 minute
-        setTimeout(() => {
-            window.location.reload()
+    function daysWeek(param) {
+        let days = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado']
+        let day = new Date().getDay() + param
+        if (param === 0) {
+            return 'Hoje'
+        } else if (param === 1) {
+            return 'Amanhã'
+        } else if (day > 6) {
+            day = day - 7
         }
-        , 60000)
+        return days[day]
+    }
+    
+    function dayClick (e) {
+        console.log(e.target.innerText)
+        if ( e.target.innerText === daysWeek(0) ) {
+            let hoje = new Date().toLocaleString().slice(0,10).split('/').reverse().join('-')
+
+            console.log(hoje)
+            setQuery(hoje)
+        } else if (e.target.innerText === daysWeek(1) ) {
+            let timezoneOffset = (-3 * 60) * 60 * 1000;
+            let amanha = new Date(new Date().getTime() + timezoneOffset + 24 * 60 * 60 * 1000).toISOString().slice(0,10)
+            setQuery(amanha)
+        } else if (e.target.innerText === daysWeek(2) ) {
+            let timezoneOffset = (-3 * 60) * 60 * 1000;
+            let segunda = new Date(new Date().getTime() + timezoneOffset + 24 * 60 * 60 * 1000 * 2).toISOString().slice(0,10)
+            setQuery(segunda)
+        } else if (e.target.innerText === daysWeek(3) ) {
+            let timezoneOffset = (-3 * 60) * 60 * 1000;
+            let terca = new Date(new Date().getTime() + timezoneOffset + 24 * 60 * 60 * 1000 * 3).toISOString().slice(0,10)
+            setQuery(terca)
+        } else if (e.target.innerText === daysWeek(4) ) {
+            let timezoneOffset = (-3 * 60) * 60 * 1000;
+            let quarta = new Date(new Date().getTime() + timezoneOffset + 24 * 60 * 60 * 1000 * 4).toISOString().slice(0,10)
+            setQuery(quarta)
+        } else if (e.target.innerText === daysWeek(5) ) {
+            let timezoneOffset = (-3 * 60) * 60 * 1000;
+            let quinta = new Date(new Date().getTime() + timezoneOffset + 24 * 60 * 60 * 1000 * 5).toISOString().slice(0,10)
+            setQuery(quinta)
+        } else if (e.target.innerText === daysWeek(6) ) {
+            let timezoneOffset = (-3 * 60) * 60 * 1000;
+            let sabado = new Date(new Date().getTime() + timezoneOffset + 24 * 60 * 60 * 1000 * 6).toISOString().slice(0,10)
+            setQuery(sabado)
+        } else{
+            setQuery('')
+        }
 
     }
+
+
 
 
     function RemoveScheduler(id) {
@@ -71,6 +120,7 @@ function Scheduler() {
         
     }
 
+
     return ( 
         <div className={styles.project_container}> 
             <div className={styles.title_container}>
@@ -78,31 +128,44 @@ function Scheduler() {
                 <LinkButton to={'/scheduler/new'} text={"Adicionar Horário"}></LinkButton>
             </div>
             <div className={styles.filter_container}>
-                <DayButton text={'Hoje'}/>  <DayButton text={'Amanhã'}/>  <DayButton text={'Quarta'}/> 
-                <DayButton text={'Quinta'}/> <DayButton text={'Sexta'}/> <input type="date" name="" id="" />
+                <DayButton text={daysWeek(0)} onClick={dayClick}/>  <DayButton text={daysWeek(1)} onClick={dayClick}/>  
+                <DayButton text={daysWeek(2)} onClick={dayClick}/>  <DayButton text={daysWeek(3)} onClick={dayClick}/> 
+                <DayButton text={daysWeek(4)} onClick={dayClick}/>  <DayButton text={daysWeek(5)} onClick={dayClick}/> 
+                <DayButton text={daysWeek(6)} onClick={dayClick}/> <DayButton text={'Todos'} onClick={dayClick}/>
+                <form onSubmit={submit} className={styles.filter_btn}>
+                    <input type="date" name="date" id="date" />
+                    <SubmitButton text={'Filtrar'}/>
+                </form>
             </div>
             {message && <Message msg={message} type='success'/>}
             {projectMsg && <Message msg={projectMsg} type='success'/>}
             <Container customClass='start'>
                 
                 {scheduler.length > 0 &&
-                scheduler.map((scheduler) => (
+                scheduler.filter(
+                    (scheduler) => scheduler.date.includes(query)
+                )
+                .map((scheduler) => (
                     <SchedulerCard
-                    key={scheduler.id}
-                    id={scheduler.id}
-                    name={scheduler.pets.name}
-                    petservice={scheduler.petservices.name}
-                    porte={scheduler.pets.porte}
-                    raca={scheduler.pets.raca.name}
-                    price={scheduler.petservices.price}
-                    horario={scheduler.horarios.horario}
-                    data={scheduler.data}
-                    func={scheduler.funcionarios.name}
-                    dono={scheduler.pets.donos.name}
-                    phone={scheduler.pets.donos.phone}
-                    handleRemove={RemoveScheduler}
+                        key={scheduler.id}
+                        id={scheduler.id}
+                        name={scheduler.pet.name}
+                        raca={scheduler.pet.raca}
+                        porte={scheduler.pet.porte}
+                        petservice={scheduler.petservices.name}
+                        price={scheduler.petservices.price}
+                        date={scheduler.date}
+                        horario={scheduler.horarios.name}
+                        func={scheduler.funcionarios.name}
+                        handleRemove={RemoveScheduler}
                     />
-                ))}
+    
+                ))
+
+
+                
+                
+                }
                 {!removeLoad && <Loading/>}
                 {removeLoad && scheduler.length === 0 && (
                     <p>Sem Horários:(</p>

@@ -13,3 +13,8 @@
     padding: .7em;
     border-radius: .5em;
 }
+
+.form_control select:focus {
+    outline: none;
+    border: 1px solid #000;
+}

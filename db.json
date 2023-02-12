@@ -1,180 +1,126 @@
 {
   "scheduler": [
     {
-      "id": 1,
-      "data": "10/01/2023",
-      "pets": {
-        "id": 1,
+      "pet": {
+        "id": "1",
         "name": "Dulinho",
-        "porte": "Grande",
-        "raca": {
-          "id": 1,
-          "name": "Fila Brasileiro"
-          },
-        "donos": {
-          "id": 1,
-          "name": "RYAN EVARISTO DE LIMA",
-          "email": "",
-          "phone": "(11) 99999-9999"
-        }
+        "raca": "Rotweiler",
+        "porte": "Grande"
       },
       "petservices": {
-        "id": 1,
+        "id": "1",
         "name": "Banho Pequeno",
-        "price": "50",
-        "executionTime": "30 minutos",
-        "description": "50dsadsadasdas"
+        "price": "50"
       },
+      "date": "2023-01-30",
       "horarios": {
-        "id": 1,
-        "horario": "08:00",
-        "disponivel": true
+        "id": "3",
+        "name": "10:00"
       },
       "funcionarios": {
-        "id": 1,
-        "name": "LAIS EVARISTO DE LIMA",
-        "email": "LAIS@hotmail.com",
-        "telefone": "(11) 99999-9999",
-        "cpf": " 123.456.789-000",
-        "endereco": "141 PRAÇA DA BANDEIRA",
-        "comissao": "10%"
-      }
-     
+        "id": "1",
+        "name": "LAIS EVARISTO DE LIMA"
+      },
+      "id": 2
     },
     {
-      "id": 2,
-      "data": "10/01/2023",
-      "pets": {
-        "id": 1,
-        "name": "Dulinho",
-        "porte": "Grande",
-        "raca": {
-          "id": 1,
-          "name": "Fila Brasileiro"
-          },
-        "donos": {
-          "id": 1,
-          "name": "RYAN EVARISTO DE LIMA",
-          "email": "",
-          "phone": "(11) 99999-9999"
-        }
+      "date": "2023-01-30",
+      "pet": {
+        "id": "2",
+        "name": "Pastor",
+        "raca": "Fila Brasileiro",
+        "porte": "Grande"
       },
       "petservices": {
-        "id": 1,
-        "name": "Banho Pequeno",
-        "price": "50",
-        "executionTime": "30 minutos",
-        "description": "50dsadsadasdas"
+        "id": "2",
+        "name": "Banho Medio",
+        "price": "70"
       },
       "horarios": {
-        "id": 1,
-        "horario": "08:00",
-        "disponivel": true
+        "id": "2",
+        "name": "09:00"
       },
       "funcionarios": {
-        "id": 1,
-        "name": "LAIS EVARISTO DE LIMA",
-        "email": "LAIS@hotmail.com",
-        "telefone": "(11) 99999-9999",
-        "cpf": " 123.456.789-000",
-        "endereco": "141 PRAÇA DA BANDEIRA",
-        "comissao": "10%"
-      }
-     
+        "id": "1",
+        "name": "LAIS EVARISTO DE LIMA"
+      },
+      "id": 3
     },
     {
-      "id": 3,
-      "data": "10/01/2023",
-      "pets": {
-        "id": 1,
-        "name": "Dulinho",
-        "porte": "Grande",
-        "raca": {
-          "id": 1,
-          "name": "Fila Brasileiro"
-          },
-        "donos": {
-          "id": 1,
-          "name": "RYAN EVARISTO DE LIMA",
-          "email": "",
-          "phone": "(11) 99999-9999"
-        }
+      "date": "2023-01-29",
+      "pet": {
+        "id": "2",
+        "name": "Pastor",
+        "raca": "Fila Brasileiro",
+        "porte": "Grande"
       },
       "petservices": {
-        "id": 1,
+        "id": "1",
         "name": "Banho Pequeno",
-        "price": "50",
-        "executionTime": "30 minutos",
-        "description": "50dsadsadasdas"
+        "price": "50"
       },
       "horarios": {
-        "id": 1,
-        "horario": "08:00",
-        "disponivel": true
+        "id": "1",
+        "name": "08:00"
       },
       "funcionarios": {
-        "id": 1,
-        "name": "LAIS EVARISTO DE LIMA",
-        "email": "LAIS@hotmail.com",
-        "telefone": "(11) 99999-9999",
-        "cpf": " 123.456.789-000",
-        "endereco": "141 PRAÇA DA BANDEIRA",
-        "comissao": "10%"
-      }
-     
+        "id": "1",
+        "name": "LAIS EVARISTO DE LIMA"
+      },
+      "id": 4
     },
     {
-      "id": 4,
-      "data": "10/01/2023",
-      "pets": {
-        "id": 1,
-        "name": "Dulinho",
-        "porte": "Grande",
-        "raca": {
-          "id": 1,
-          "name": "Fila Brasileiro"
-          },
-        "donos": {
-          "id": 1,
-          "name": "RYAN EVARISTO DE LIMA",
-          "email": "",
-          "phone": "(11) 99999-9999"
-        }
+      "pet": {
+        "id": "3",
+        "name": "Moana",
+        "raca": "Yorkshire",
+        "porte": "P"
       },
       "petservices": {
-        "id": 1,
+        "id": "1",
         "name": "Banho Pequeno",
-        "price": "50",
-        "executionTime": "30 minutos",
-        "description": "50dsadsadasdas"
+        "price": "50"
       },
+      "date": "2023-02-18",
       "horarios": {
-        "id": 1,
-        "horario": "08:00",
-        "disponivel": true
+        "id": "3",
+        "name": "10:00"
       },
       "funcionarios": {
-        "id": 1,
-        "name": "LAIS EVARISTO DE LIMA",
-        "email": "LAIS@hotmail.com",
-        "telefone": "(11) 99999-9999",
-        "cpf": " 123.456.789-000",
-        "endereco": "141 PRAÇA DA BANDEIRA",
-        "comissao": "10%"
-      }
-     
+        "id": "1",
+        "name": "LAIS EVARISTO DE LIMA"
+      },
+      "id": 5
     }
   ],
-
-  "Pets": [
+  "pets": [
     {
       "id": 1,
       "name": "Dulinho",
       "porte": "Grande",
       "raca": {
         "id": 1,
+        "name": "Rotweiler"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Pastor",
+      "porte": "Grande",
+      "raca": {
+        "id": 2,
         "name": "Fila Brasileiro"
       }
+    },
+    {
+      "name": "Moana",
+      "raca": {
+        "id": "3",
+        "name": "Yorkshire"
+      },
+      "sexo": "F",
+      "porte": "P",
+      "id": 3
     }
   ],
   "Donos": [
@@ -185,6 +131,14 @@
       "telefone": "(11) 99999-9999",
       "cpf": " 123.456.789-00",
       "endereco": "141 PRAÇA DA BANDEIRA"
+    },
+    {
+      "name": "Jaiminho",
+      "cpf": "046.409.705-36",
+      "email": "jaimesonsantos321@gmail.com",
+      "telefone": "(79) 9 9661-2628",
+      "endereco": "Rua Professora Ofenizia Freire Nº 55",
+      "id": 2
     }
   ],
   "funcionarios": [
@@ -205,28 +159,49 @@
       "price": "50",
       "executionTime": "30 minutos",
       "description": "50dsadsadasdas"
+    },
+    {
+      "id": 2,
+      "name": "Banho Medio",
+      "price": "70",
+      "executionTime": "40 minutos",
+      "description": "70dsadsadasdas"
+    },
+    {
+      "name": "Tosa Higiênica",
+      "executionTime": "1 hora",
+      "price": "60",
+      "id": 3
     }
   ],
   "Racas": [
     {
       "id": 1,
       "name": "Rotweiler"
+    },
+    {
+      "id": 2,
+      "name": "Fila Brasileiro"
+    },
+    {
+      "id": 3,
+      "name": "Yorkshire"
     }
   ],
   "horarios": [
     {
-      "id": 1,
-      "horario": "08:00",
+      "id": "1",
+      "name": "08:00",
       "disponivel": true
     },
     {
-      "id": 2,
-      "horario": "09:00",
+      "id": "2",
+      "name": "09:00",
       "disponivel": true
     },
     {
-      "id": 3,
-      "horario": "10:00",
+      "id": "3",
+      "name": "10:00",
       "disponivel": true
     }
   ]

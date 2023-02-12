@@ -1,7 +1,6 @@
 import styles from './Select.module.css'
 
-function Select({text, name, options, handleOnChange, value}) {
-
+function Select2({text, name, options, handleOnChange, value}) {
     return ( 
         
         <div className={styles.form_control}>
@@ -12,7 +11,11 @@ function Select({text, name, options, handleOnChange, value}) {
                value={value || ''}>
                 <option value="">Selecione uma opção</option>
                 {options.map((option) => (
-                    <option value={option.id} data-price={option.price} key={option.id}>{option.name} </option>
+                    <option value={option.id} data-raca={option.raca.name}  data-porte={option.porte} key={option.id}>{option.name} </option>
+
+                    
+                    
+                    
                 ))}
             </select>
 
@@ -20,4 +23,4 @@ function Select({text, name, options, handleOnChange, value}) {
      );
 }
 
-export default Select;
+export default Select2;

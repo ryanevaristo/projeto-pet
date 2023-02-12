@@ -1,6 +1,6 @@
 import Message from "../layout/Message";
 import Container from '../layout/Container'
-import LinkButton from "./LinkButton";
+import LinkButton from "../layout/LinkButton";
 
 import { useLocation } from "react-router-dom";
 
@@ -72,6 +72,7 @@ function PetServices() {
                     name={petService.name}
                     description={petService.description}
                     price={petService.price}
+                    executionTime={petService.executionTime}
                     RemovePetServices={RemovePetServices}
                     handleRemove={RemovePetServices}
                     />

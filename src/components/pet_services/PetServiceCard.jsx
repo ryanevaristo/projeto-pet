@@ -2,7 +2,7 @@ import styles from "./PetServiceCard.module.css"
 import { Link } from "react-router-dom";
 import {BsPencil, BsFillTrashFill} from 'react-icons/bs'
 
-function PetServiceCard({id, name, description, executionTime, value, handleRemove}) {
+function PetServiceCard({id, name, description, executionTime, price, handleRemove}) {
     
         const remove = (e) => {
             e.preventDefault()
@@ -21,7 +21,7 @@ function PetServiceCard({id, name, description, executionTime, value, handleRemo
                 </p>
 
                 <p>
-                    <span>Valor:</span> {value}
+                    <span>Valor:</span> R$ {price},00
                 </p>
     
                 <br />

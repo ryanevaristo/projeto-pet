@@ -19,8 +19,8 @@ import PetService from './components/pages/PetService'
 import Funcionario from './components/pages/funcionarios/Funcionario'
 import Funcionarios from './components/pages/funcionarios/Funcionarios'
 import NewFuncionario from './components/pages/funcionarios/NewFuncionario'
-
-
+import NewScheduler from './components/pages/scheduler/NewScheduler'
+import EditScheduler from './components/pages/scheduler/EditScheduler'
 function App() {
   return ( 
 
@@ -36,7 +36,8 @@ function App() {
           <Route path="/clients" element={<Clients/>}/>
           <Route path="/client/:id" element={<Client/>}/>
           <Route path="/scheduler" element={<Scheduler/>}/>
-          <Route path="/project/:id" element={<Project/>}/>
+          <Route path="/scheduler/new" element={<NewScheduler/>}/>
+          <Route path="/scheduler/:id" element={<EditScheduler/>}/>
           <Route path="*" element={<h1>404 - Not Found</h1>}/>
           <Route path="/pets" element={<Pets/>}/>
           <Route path="/pets/new" element={<NewPet/>}/>

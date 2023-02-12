@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Container from '../../layout/Container'
 import Message from '../../layout/Message'
 import styles from './Project.module.css'
-import ProjectForm from '../../scheduler/ProjectForm'
+import ProjectForm from '../../scheduler/SchedulerForm'
 function Project() {
     const {id} = useParams()
     

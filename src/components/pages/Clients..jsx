@@ -1,6 +1,6 @@
 import Message from "../layout/Message";
 import Container from '../layout/Container'
-import LinkButton from "./LinkButton";
+import LinkButton from "../layout/LinkButton";
 
 
 import { useLocation } from "react-router-dom";

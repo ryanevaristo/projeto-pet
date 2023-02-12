@@ -1,8 +1,9 @@
 import styles from './DayButton.module.css'
 
-function DayButton({text}) {
+function DayButton({text, onClick} ) {
     return ( 
-        <button className={styles.btn}>{text}</button>
+        <button className={styles.btn} onClick={onClick}>{text}</button>
+        
      );
 }
 

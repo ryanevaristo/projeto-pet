@@ -13,4 +13,43 @@
 .filter_container {
     display: flex;
     justify-content: center;
+    
+}
+
+.filter_btn{
+    margin: 0 1em;
+    display: flex;
+}
+.filter_btn input{
+    margin-right: 1em;
+    border-radius: .5em;
+    width: 150px;
+    height: 30px;
+    
+
+}
+.filter_btn button{
+    
+    margin-left: 1em;
+}
+.days_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.days_container .DayButton {
+    width: 100px;
+    height: 50px;
+    margin: 0 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    text-align: center;
+    line-height: 50px;
+    font-size: 18px;
+    color: #333;
+}
+.days_container .DayButton:hover {
+    background-color: #eee;
+    cursor: pointer;
 }

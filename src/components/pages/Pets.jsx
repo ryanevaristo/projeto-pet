@@ -1,6 +1,6 @@
 import Message from "../layout/Message";
 import Container from '../layout/Container'
-import LinkButton from "./LinkButton";
+import LinkButton from "../layout/LinkButton";
 
 
 import { useLocation } from "react-router-dom";
@@ -16,6 +16,7 @@ function Pets() {
     const [pets, setPets] = useState([])
     const [removeLoad, setRemoveLoad] = useState(false)
     const [petMsg, setPetMsg] = useState('')
+    const [query, setQuery] = useState('')
 
     const location = useLocation()
     let message = ''
@@ -23,6 +24,12 @@ function Pets() {
         message = location.state.message
     }
 
+    function handleSearch(e){
+        setQuery(e.target.value)
+    }
+    console.log(
+        pets.filter((pet) => pet.name.toLowerCase().includes(query.toLowerCase()))
+    )
     useEffect(() => {
         setTimeout(() => {
             fetch('http://localhost:5000/Pets', {
@@ -65,11 +72,13 @@ function Pets() {
                 <LinkButton to="/pets/new" text="Novo Pet" />
 
             </div>
+            <input type="search" placeholder="searcho,,,,,,,," name="search" id="search" onChange={handleSearch} />
             {message && <Message message={message} />}
             {petMsg && <Message message={petMsg} />}
             <Container customClass='start'>
             {pets.length > 0 &&
-                pets.map((pets) => (
+                pets.filter((pet) => pet.name.toLowerCase().includes(query.toLowerCase()))
+                .map((pets) => (
                     <PetCard
                     key={pets.id}
                     id={pets.id}

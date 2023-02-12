@@ -1,22 +1,22 @@
-import Loading from "../layout/Loading";
+import Loading from "../../layout/Loading";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Container from "../layout/Container";
-import Message from "../layout/Message";
-import styles from "./PetService.module.css";
-import PetServiceForm from "../pet_services/PetServiceForm";
+import Container from "../../layout/Container";
+import Message from "../../layout/Message";
+import styles from "./EditScheduler.module.css";
+import SchedulerForm from "../../scheduler/SchedulerForm";
 
-function PetService() {
+function EditScheduler() {
     const { id } = useParams();
     
-    const [petService, setPetService] = useState([]);
-    const [showPetServiceForm, setShowPetServiceForm] = useState(false);
+    const [scheduler, setScheduler] = useState([]);
+    const [showSchedulerForm, setShowSchedulerForm] = useState(false);
     const [message, setMessage] = useState();
     const [type, setType] = useState();
     
     useEffect(() => {
         setTimeout(() => {
-        fetch(`http://localhost:5000/petServices/${id}`, {
+        fetch(`http://localhost:5000/scheduler/${id}`, {
             method: "GET",
             headers: {
             "Content-Type": "application/json",
@@ -25,62 +25,62 @@ function PetService() {
             .then((resp) => resp.json())
             .then((data) => {
             console.log(data);
-            setPetService(data);
+            setScheduler(data);
             });
         }, 500);
     }, [id]);
     
-    function editPetService(petService) {    
-        fetch(`http://localhost:5000/petServices/${petService.id}`, {
+    function editScheduler(scheduler) {    
+        fetch(`http://localhost:5000/scheduler/${scheduler.id}`, {
         method: "PATCH",
         headers: {
             "Content-type": "application/json",
         },
-        body: JSON.stringify(petService),
+        body: JSON.stringify(scheduler),
         })
         .then((resp) => resp.json())
         .then((data) => {
-            setPetService(data);
-            setShowPetServiceForm(false);
-            setMessage("Projeto Atualizado");
+            setScheduler(data);
+            setShowSchedulerForm(false);
+            setMessage("Scheduler Atualizado");
             setType("success");
         })
         .catch((err) => console.log(err));
     }
     
-    function TogglePetServiceForm() {
-        setShowPetServiceForm(!showPetServiceForm);
+    function ToggleSchedulerForm() {
+        setShowSchedulerForm(!showSchedulerForm);
     }
 
     return ( 
         <>
-            {petService.name? (
+            {scheduler.id? (
                 <div className={styles.client_details}>
                     {message && <Message type={type} msg={message}/>}
                     <Container customClass='column'>
                         <div className={styles.details_container}>
-                            <h1>Serviço: {petService.name}</h1>
-                            <button className={styles.btn} onClick={TogglePetServiceForm}>
-                                {!showPetServiceForm ? 'Editar Serviço' : "Fechar"}
+                            <h1>Pet: {scheduler.pet.name}</h1>
+                            <button className={styles.btn} onClick={ToggleSchedulerForm}>
+                                {!showSchedulerForm ? 'Editar Horario' : "Fechar"}
                             </button>
-                            {!showPetServiceForm ? (
+                            {!showSchedulerForm ? (
                                 <div className={styles.client_info}>
                                     <p>
-                                        <span>Tipo de Serviço:</span> {petService.name}
+                                        <span>Nome do Serviço:</span> {scheduler.petservices.name}
                                     </p>
                                     <p>
-                                        <span>Valor:</span> {petService.price}
+                                        <span>Valor:</span> {scheduler.petservices.price}
                                     </p>
                                     <p>
-                                        <span>Descrição:</span> {petService.description}
+                                        <span>Data de Agendamento:</span> {scheduler.date} horario: {scheduler.horarios.name}
                                     </p>
                                     <p>
-                                        <span>Tempo de Execução:</span> {petService.executionTime}
+                                        <span>Funcionario Responsavel:</span> {scheduler.funcionarios.name}
                                     </p>
                                 </div>
                             ) : (
                                 <div className={styles.client_info}>
-                                    <PetServiceForm handleSubmit={editPetService} btnText="Concluir" petServiceData={petService}/>
+                                    <SchedulerForm handleSubmit={editScheduler} btnText="Concluir" SchedulerData={scheduler}/>
                                 </div>
                             )}
                         </div>
@@ -96,4 +96,4 @@ function PetService() {
      );
 }
 
-export default PetService;
+export default EditScheduler;

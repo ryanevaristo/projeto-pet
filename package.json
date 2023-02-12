@@ -26,8 +26,8 @@
       "react-app",
       "react-app/jest"
     ],
-    "rules":  {
-      "dot-location" :"off"
+    "rules": {
+      "dot-location": "off"
     }
   },
   "browserslist": {
