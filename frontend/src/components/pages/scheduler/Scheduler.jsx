@@ -12,11 +12,13 @@ import Loading from "../../layout/Loading";
 import SubmitButton from "../../form/SubmitButton";
 
 function Scheduler() {
-
+    
+    let hoje = new Date().toLocaleString().slice(0,10).split('/').reverse().join('-')
     const [scheduler, setScheduler] = useState([])
     const [removeLoad, setRemoveLoad] = useState(false)
     const [projectMsg, setSchedulerMsg] = useState('')
     const [query , setQuery] = useState('')
+    
 
     const location = useLocation()
     let message = ''

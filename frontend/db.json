@@ -91,6 +91,52 @@
         "name": "LAIS EVARISTO DE LIMA"
       },
       "id": 5
+    },
+    {
+      "pet": {
+        "id": "1",
+        "name": "Dulinho",
+        "raca": "Rotweiler",
+        "porte": "Grande"
+      },
+      "petservices": {
+        "id": "2",
+        "name": "Banho Medio",
+        "price": "70"
+      },
+      "date": "2023-02-25",
+      "horarios": {
+        "id": "3",
+        "name": "10:00"
+      },
+      "funcionarios": {
+        "id": "1",
+        "name": "LAIS EVARISTO DE LIMA"
+      },
+      "id": 6
+    },
+    {
+      "pet": {
+        "id": "3",
+        "name": "Moana",
+        "raca": "Yorkshire",
+        "porte": "P"
+      },
+      "petservices": {
+        "id": "3",
+        "name": "Tosa Higiênica",
+        "price": "60"
+      },
+      "date": "2023-02-16",
+      "horarios": {
+        "id": "2",
+        "name": "09:00"
+      },
+      "funcionarios": {
+        "id": "1",
+        "name": "LAIS EVARISTO DE LIMA"
+      },
+      "id": 7
     }
   ],
   "pets": [
