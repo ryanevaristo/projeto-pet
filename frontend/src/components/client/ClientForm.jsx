@@ -16,27 +16,18 @@ function ClientForm({ handleSubmit, clientData, btnText}) {
 
     function handleChange(e) {
         setClient({ ...client, [e.target.name]: e.target.value })
+        console.log(e.target.name)
       }
 
     return (
         <form className={styles.form} onSubmit={submit}>
-           <Input
-                
+           <Input 
                 type="text"
                 text="Nome do Cliente"
-                name="name"
+                name="nome"
                 placeholder="Insira o nome do Cliente"
-                value={client.name}
+                value={client.nome}
                 handleOnChange={handleChange}
-            />
-            <Input
-                type="text"
-                text="CPF"
-                name="cpf"
-                placeholder={"000.000.000-00"}
-                value={client.cpf}
-                handleOnChange={handleChange}
-            
             />
             <Input
                 type="email"
@@ -60,6 +51,14 @@ function ClientForm({ handleSubmit, clientData, btnText}) {
                 name="endereco"
                 placeholder={"Rua, Número, Bairro, Cidade, Estado"}
                 value={client.endereco}
+                handleOnChange={handleChange}
+            />
+            <Input
+                type="text"
+                text="Observações"
+                name="observacoes"
+                placeholder={"Insira aqui alguma observação"}
+                value={client.observacoes}
                 handleOnChange={handleChange}
             />
             

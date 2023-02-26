@@ -16,7 +16,7 @@ function Client (){
 
     useEffect(() => {
         setTimeout(() => {
-            fetch(`http://localhost:5000/Donos/${id}`, {
+            fetch(`http://localhost:8000/donos/${id}`, {
             method:'GET',
             headers: {
                 'Content-Type' : 'application/json',
@@ -31,8 +31,8 @@ function Client (){
     },[id]);
 
     function editClient(client){
-        fetch(`http://localhost:5000/Donos/${id}`, {
-            method:'PATCH',
+        fetch(`http://localhost:8000/donos/${id}`, {
+            method:'PUT',
             headers: {
                 'Content-Type' : 'application/json',
             },
@@ -58,12 +58,12 @@ function Client (){
 
     return ( 
         <>
-            {client.name? (
+            {client.nome? (
                 <div className={styles.client_details}>
                     {message && <Message type={type} msg={message}/>}
                     <Container customClass='column'>
                         <div className={styles.details_container}>
-                            <h1>Nome do Cliente: {client.name}</h1>
+                            <h1>Nome do Cliente: {client.nome}</h1>
                             <button className={styles.btn} onClick={ToggleClientForm}>
                                 {!showClientForm ? 'Editar Cliente' : "Fechar"}
                             </button>

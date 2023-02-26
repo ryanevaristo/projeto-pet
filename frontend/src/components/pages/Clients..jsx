@@ -24,7 +24,7 @@ function Clients() {
 
     useEffect(() => {
         setTimeout(() => {
-            fetch('http://localhost:5000/Donos', {
+            fetch('http://localhost:8000/donos', {
             method:'GET',
             headers: {
                 'Content-Type' : 'application/json',
@@ -73,9 +73,9 @@ function Clients() {
                     <ClientCard
                     key={clients.id}
                     id={clients.id}
-                    name={clients.name}
-                    cpf={clients.cpf}
-                    phone={clients.phone}
+                    name={clients.nome}
+                    cpf={"cpf"}
+                    phone={clients.telefone}
                     email={clients.email}
                     endereco={clients.endereco}
                     handleRemove={RemoveClients}

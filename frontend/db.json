@@ -185,6 +185,14 @@
       "telefone": "(79) 9 9661-2628",
       "endereco": "Rua Professora Ofenizia Freire Nº 55",
       "id": 2
+    },
+    {
+      "name": "teste",
+      "email": "exemplo@gmail.com",
+      "endereco": "Tv. Prof. Antônio Ayres, 25 - Centro, Itabaianinha - SE",
+      "telefone": "79998807853",
+      "observacoes": "nenhuma observação",
+      "id": 3
     }
   ],
   "funcionarios": [

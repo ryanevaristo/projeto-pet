@@ -22,7 +22,7 @@ function PetServiceForm({ handleSubmit, petServiceData, btnText }) {
             <Input
                 text="Nome do serviço"
                 type="text"
-                name="name"
+                name="nome_servico"
                 placeholder="Nome do serviço"
                 value={petService.name}
                 handleOnChange={handleChange}
@@ -31,7 +31,7 @@ function PetServiceForm({ handleSubmit, petServiceData, btnText }) {
             <Input
                 text={"Tempo de duração"}
                 type="text"
-                name="executionTime"
+                name="tempo"
                 placeholder="Exemplo: 30 minutos"
                 value={petService.executionTime}
                 handleOnChange={handleChange}
@@ -39,15 +39,15 @@ function PetServiceForm({ handleSubmit, petServiceData, btnText }) {
             <Input
                 text="Preço"
                 type="number"
-                name="price"
-                placeholder="Preçõ do serviço"
+                name="valor"
+                placeholder="Preço do Serviço"
                 value={petService.value}
                 handleOnChange={handleChange}
             />
             <Input
                 text="Descrição"
                 type="textarea"
-                name="description"
+                name="descricao"
                 placeholder="Descrição"
                 value={petService.description}
                 handleOnChange={handleChange}

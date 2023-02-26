@@ -15,7 +15,7 @@ router = APIRouter()
 
 #POST servico
 @router.post('/', status_code=status.HTTP_201_CREATED, response_model=ServicoSchemaCreate)
-async def post_servico(servico: ServicoSchema ,usuario_logado: UsuarioModel = Depends(get_current_user),db: AsyncSession = Depends(get_session)):
+async def post_servico(servico: ServicoSchema ,db: AsyncSession = Depends(get_session)):
     novo_servico: ServicoModel = ServicoModel(
         nome_servico=servico.nome_servico,
         valor=servico.valor,

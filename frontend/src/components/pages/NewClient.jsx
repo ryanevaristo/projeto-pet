@@ -9,7 +9,7 @@ function NewClient() {
   function createPost(project) {
     // initialize cost and services
 
-    fetch('http://localhost:5000/Donos', {
+    fetch('http://localhost:8000/donos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ function NewClient() {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        navigate('/Donos', { state: {message: 'Novo pet adicionado'} })
+        navigate('/clients', { state: {message: 'Novo pet adicionado'} })
       })
   }
 

@@ -6,7 +6,7 @@ function NewPetService (){
     const navigate = useNavigate();
 
     function createPetService(petService){
-        fetch("http://localhost:5000/petservices", {
+        fetch("http://localhost:8000/servicos", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

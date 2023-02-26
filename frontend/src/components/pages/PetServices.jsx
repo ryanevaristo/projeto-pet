@@ -22,7 +22,7 @@ function PetServices() {
 
     useEffect(() => {
         setTimeout(() => {
-            fetch('http://localhost:5000/petservices', {
+            fetch('http://localhost:8000/servicos', {
             method:'GET',
             headers: {
                 'Content-Type' : 'application/json',
@@ -40,7 +40,7 @@ function PetServices() {
     },[])
 
     function RemovePetServices(id){
-        fetch(`http://localhost:5000/petservices/${id}`,{
+        fetch(`http://localhost:8000/servicos/${id}`,{
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -69,10 +69,10 @@ function PetServices() {
                     <PetServiceCard
                     key={petService.id}
                     id={petService.id}
-                    name={petService.name}
-                    description={petService.description}
-                    price={petService.price}
-                    executionTime={petService.executionTime}
+                    name={petService.nome}
+                    description={petService.descricao}
+                    price={petService.valor}
+                    executionTime={petService.tempo}
                     RemovePetServices={RemovePetServices}
                     handleRemove={RemovePetServices}
                     />

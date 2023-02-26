@@ -13,7 +13,7 @@ router = APIRouter()
 
 #POST dono
 @router.post('/', status_code=status.HTTP_201_CREATED, response_model=DonoSchemaCreate)
-async def post_dono(dono: DonoSchema ,usuario_logado: UsuarioModel = Depends(get_current_user),db: AsyncSession = Depends(get_session)):
+async def post_dono(dono: DonoSchema ,db: AsyncSession = Depends(get_session)):
     novo_dono: DonoModel = DonoModel(
         nome=dono.nome,
         telefone=dono.telefone,
