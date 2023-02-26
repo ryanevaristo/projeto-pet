@@ -10,4 +10,4 @@ class ServicoModel(settings.DB_BASE_MODEL):
     nome_servico = Column(String(256), nullable=True)
     valor = Column(Integer, nullable=True)
     tempo = Column(String(256), nullable=True)
-    usuario_id = Column(Integer, ForeignKey('usuarios.id'))
+    descricao = Column(String(256), nullable=True)

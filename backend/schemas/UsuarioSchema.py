@@ -1,6 +1,6 @@
 from typing import List, Optional
 from pydantic import AnyUrl, BaseModel, EmailStr
-from schemas.PedidoSchema import PedidoSchemaDatas
+from schemas.SchedulerSchema import SchedulerSchemaDatas
 
 
 class UsuarioSchemaBase(BaseModel):
@@ -21,7 +21,6 @@ class UsuarioSchemaCreate(UsuarioSchemaBase):
 
 
 class UsuarioSchemaUpdate(UsuarioSchemaBase):
-    id: Optional[int]
     foto: Optional[AnyUrl]
     nome: Optional[str]
     sobrenome: Optional[str]
@@ -30,4 +29,4 @@ class UsuarioSchemaUpdate(UsuarioSchemaBase):
     senha: Optional[str]
 
 class UsuarioSchemaAgenda(UsuarioSchemaBase):
-    pedido: Optional[List[PedidoSchemaDatas]]
+    agendamentos: Optional[List[SchedulerSchemaDatas]]

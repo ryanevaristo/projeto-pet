@@ -8,19 +8,19 @@ from sqlalchemy.future import select
 from models.ServicoModel import ServicoModel
 from models.UsuarioModel import UsuarioModel
 from core.deps import get_session, get_current_user
-from schemas.ServicoSchema import ServicoSchema
+from schemas.ServicoSchema import ServicoSchema, ServicoSchemaCreate, ServicoSchemaUpdate
 
 
 router = APIRouter()
 
 #POST servico
-@router.post('/', status_code=status.HTTP_201_CREATED)
-async def post_servico(servico: ServicoSchema,usuario_logado: UsuarioModel = Depends(get_current_user),db: AsyncSession = Depends(get_session)):
+@router.post('/', status_code=status.HTTP_201_CREATED, response_model=ServicoSchemaCreate)
+async def post_servico(servico: ServicoSchema ,usuario_logado: UsuarioModel = Depends(get_current_user),db: AsyncSession = Depends(get_session)):
     novo_servico: ServicoModel = ServicoModel(
-        id=servico.id,
         nome_servico=servico.nome_servico,
         valor=servico.valor,
-        tempo=servico.tempo
+        tempo=servico.tempo,
+        descricao=servico.descricao,
         )
 
     db.add(novo_servico)
@@ -59,11 +59,11 @@ async def get_servico(id_servico: int, db: AsyncSession = Depends(get_session)):
 
 #GET servico
 @router.put('/{id_servico}', status_code=status.HTTP_202_ACCEPTED)
-async def put_servico(servico: ServicoSchema,id_servico: int,usuario_logado: UsuarioModel = Depends(get_current_user), db: AsyncSession = Depends(get_session)):
+async def put_servico(servico: ServicoSchemaUpdate,id_servico: int, usuario_logado: UsuarioModel = Depends(get_current_user), db: AsyncSession = Depends(get_session)):
     async with db as session:
-        query = select(ServicoModel).filter(ServicoModel.id == id_servico).filter(ServicoModel.usuario_id == usuario_logado.id)
+        query = select(ServicoModel).filter(ServicoModel.id == id_servico)
         result = await session.execute(query)
-        servico_up: ServicoSchema = result.scalars().unique().one_or_none()
+        servico_up: ServicoSchemaUpdate = result.scalars().unique().one_or_none()
 
         if servico_up:
             if servico.nome_servico:

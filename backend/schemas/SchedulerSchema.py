@@ -6,7 +6,7 @@ from pydantic import BaseModel
 
 
 
-class PedidoSchema(BaseModel):
+class SchedulerSchema(BaseModel):
     id: Optional[int]
     usuario_id: Optional[int] # funcionario
     servico_id: Optional[int]
@@ -22,7 +22,7 @@ class PedidoSchema(BaseModel):
         orm_mode = True
     
 
-class PedidoSchemaDatas(PedidoSchema):
+class SchedulerSchemaDatas(SchedulerSchema):
     horario: str
     created_by: date | None = None
     cancel_date: date | None = None
