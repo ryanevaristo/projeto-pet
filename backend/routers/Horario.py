@@ -11,7 +11,7 @@ router = APIRouter()
 
 #POST horario
 @router.post('/', status_code=status.HTTP_201_CREATED, response_model=HorarioSchemaCreate)
-async def post_horario(horario: HorarioSchema ,usuario_logado: UsuarioModel = Depends(get_current_user),db: AsyncSession = Depends(get_session)):
+async def post_horario(horario: HorarioSchemaCreate ,db: AsyncSession = Depends(get_session)):
     novo_horario: HorarioModel = HorarioModel(
         hora=horario.hora,
         disponivel=horario.disponivel

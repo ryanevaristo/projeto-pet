@@ -5,6 +5,8 @@ import Container from "../layout/Container";
 import Message from "../layout/Message";
 import styles from "./Client.module.css";
 import ClientForm from "./ClientForm";
+import LinkButton from "../layout/LinkButton";
+import PetCard from "../pet/PetCard";
 
 function Client (){
     const {id} = useParams()
@@ -48,7 +50,7 @@ function Client (){
             setTimeout(() => {
                 setMessage()
                 setType()
-            }, 3000);
+            }, 0);
         })
     }
 
@@ -75,6 +77,26 @@ function Client (){
                                     <p>
                                         <span>Endereço:</span> {client.endereco}
                                     </p>
+                                    <p>
+                                        <LinkButton className={styles.btn} to={`/client/${client.id}/pets/new`} text={'Adicionar Pet'}>
+                                            
+                                        </LinkButton>
+                                    </p>
+
+                                    <Container customClass='start'>
+                                        {client.pets.length > 0 &&
+                                            client.pets.map((pet) => (
+                                                
+                                                <PetCard
+                                                key={pet.id}
+                                                id={pet.id}
+                                                name={pet.nome}
+                                                porte={pet.porte}
+                                                raca= {pet.raca}
+                                                />
+                                            ))}
+                                    </Container>
+                                            
                                 </div>
                             ) : (
                                 <div className={styles.client_info}>

@@ -1,6 +1,6 @@
 import styles from './Select.module.css'
 
-function Select({text, name, options, handleOnChange, value}) {
+function Select({text, name, options, handleOnChange, value, nome}) {
 
     return ( 
         
@@ -12,7 +12,7 @@ function Select({text, name, options, handleOnChange, value}) {
                value={value || ''}>
                 <option value="">Selecione uma opção</option>
                 {options.map((option) => (
-                    <option value={option.id} data-price={option.price} key={option.id}>{option.name} </option>
+                    <option value={option.id} nome={option.nome} key={option.id}>{option[nome]} </option>
                 ))}
             </select>
 

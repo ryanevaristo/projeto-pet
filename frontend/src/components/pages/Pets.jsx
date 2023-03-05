@@ -32,7 +32,7 @@ function Pets() {
     )
     useEffect(() => {
         setTimeout(() => {
-            fetch('http://localhost:5000/Pets', {
+            fetch('http://localhost:8000/Pets', {
             method:'GET',
             headers: {
                 'Content-Type' : 'application/json',
@@ -51,7 +51,7 @@ function Pets() {
     },[])
 
     function RemovePets(id){
-        fetch(`http://localhost:5000/Pets/${id}`,{
+        fetch(`http://localhost:8000/Pets/${id}`,{
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -72,7 +72,6 @@ function Pets() {
                 <LinkButton to="/pets/new" text="Novo Pet" />
 
             </div>
-            <input type="search" placeholder="searcho,,,,,,,," name="search" id="search" onChange={handleSearch} />
             {message && <Message message={message} />}
             {petMsg && <Message message={petMsg} />}
             <Container customClass='start'>

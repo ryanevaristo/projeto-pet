@@ -3,57 +3,38 @@ import { useState, useEffect } from 'react';
 import Select from '../form/Select';
 import SubmitButton from '../form/SubmitButton';
 import Input from '../form/Input';
+import { useParams } from "react-router-dom";
+import{ raca, pelagem, sexo, porte } from '../../localstorage/LocalStorage'
+
+
+
+
 function PetForm({ handleSubmit, animalData, btnText}) {
     const [animal , setAnimal] = useState(animalData || {})
-    const [raca, setRaca] = useState([])
-    const [dono, setDono] = useState([])
-    // GET RACAS
-    useEffect(() =>{
-        fetch("http://localhost:5000/Racas",
-    {
-        method: "GET",
-        headers:{
-            'Content-type': 'aplication/json'
-        }
-    }
-    ).then((resp) => resp.json())
-    .then((data) => {
-        setRaca(data)
-    }).
-    catch((error) => console.log(error));
-    },[])
+
+    const {id} = useParams()
     
+    useEffect(() => {
+        // supondo que você tenha o dono_id no estado do componente pai
+        const dono_id = parseInt(id);
+        setAnimal(prevState => ({ ...prevState, dono_id }));
+      }, []);
+      
     // GET DONOS
 
-    useEffect(() =>{
-        fetch("http://localhost:5000/Donos",
-    {
-        method: "GET",
-        headers:{
-            'Content-type': 'aplication/json'
-        }
-    }
-    ).then((resp) => resp.json())
-    .then((data) => {
-        setDono(data)
-    }).
-    catch((error) => console.log(error));
-    },[])
 
     const submit = (e) => {
         e.preventDefault()
         handleSubmit(animal)
+        console.log(animal);
     }
 
     function handleChange(e) {
-        setAnimal({...animal, [e.target.name]: e.target.value})
+        setAnimal({...animal, [e.target.name]:  e.target.value})
+        
     }
-    function handleRaca(e) {
-        setAnimal({...animal, raca: {
-            id: e.target.value,
-            name: e.target.options[e.target.selectedIndex].text
-        }})
-    }
+    console.log(animal);
+
     return (
         <form className={styles.form} onSubmit={submit}>
            <Input
@@ -64,31 +45,43 @@ function PetForm({ handleSubmit, animalData, btnText}) {
                 handleOnChange={handleChange}
                 value={animal.nome ? animal.nome : ""}
            />
-           <Select name="dono_id"
-                text="Dono"
-                options={dono}
-                handleOnChange={handleRaca}
-                value={animal.dono ? animal.dono.id : ''}
-                />
-            <Select name="raca_id"
+            <Select name="raca"
                 text="Raça"
                 options={raca}
-                handleOnChange={handleRaca}
-                value={animal.raca ? animal.raca.id : ''}
+                nome = {"nome"}
+                handleOnChange={handleChange}
+                value={animal.raca ? animal.raca: ''}
                 />
             <Select name="sexo"
                 text="Sexo"
-                options={[{id: 'M', name: 'Macho'}, {id: 'F', name: 'Fêmea'}]}
+                options={sexo}
+                nome = {"nome"}
                 handleOnChange={handleChange}
                 value={animal.sexo ? animal.sexo : ''}
                 />
             <Select name="porte"
                 text="Porte"
-                options={[{id: 'P', name: 'Pequeno'}, {id: 'M', name: 'Médio'}, {id: 'G', name: 'Grande'}]}
+                options={porte}
+                nome = {"nome"}
                 handleOnChange={handleChange}
                 value={animal.porte ? animal.porte : ''}
                 />
-            <SubmitButton text={btnText} />
+            <Select name="pelagem"
+                text="Pelagem"
+                options={pelagem}
+                nome = {"nome"}
+                handleOnChange={handleChange}
+                value={animal.pelagem ? animal.pelagem : ''}
+            />
+            <Input
+                type="text"
+                text="Observações"
+                name="observacoes"
+                placeholder="Insira alguma observação"
+                handleOnChange={handleChange}
+                value={animal.observacoes ? animal.observacoes : ""}
+            />
+            <SubmitButton text={btnText}  />
             </form>
             )
 

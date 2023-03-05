@@ -9,3 +9,20 @@ class HorarioSchema(BaseModel):
     
     class Config:
         orm_mode = True
+
+
+class HorarioSchemaCreate(BaseModel):
+    hora: str
+    disponivel: bool = True
+    
+    
+    class Config:
+        orm_mode = True
+
+class HorarioSchemaUpdate(BaseModel):
+    hora: Optional[str]
+    disponivel: Optional[bool]
+    
+    
+    class Config:
+        orm_mode = True

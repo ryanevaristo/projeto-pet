@@ -4,6 +4,7 @@ from routers.Usuario import router as router_usuario
 from routers.Servico import router as router_servico
 from routers.Dono import router as router_dono
 from routers.Pet import router as router_pet
+from routers.Horario import router as router_horario
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -14,6 +15,8 @@ app.include_router(router=router,prefix='/schedulers', tags=["Schedulers"])
 app.include_router(router=router_servico, prefix='/servicos', tags=["Servicos"])
 app.include_router(router=router_dono, prefix='/donos', tags=["Donos"])
 app.include_router(router=router_pet, prefix='/pets', tags=["Pets"])
+app.include_router(router=router_horario, prefix='/horarios', tags=["Horarios"])
+
 
 origins = [
     "http://localhost:3000",

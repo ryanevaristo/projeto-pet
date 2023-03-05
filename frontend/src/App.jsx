@@ -40,7 +40,7 @@ function App() {
           <Route path="/scheduler/:id" element={<EditScheduler/>}/>
           <Route path="*" element={<h1>404 - Not Found</h1>}/>
           <Route path="/pets" element={<Pets/>}/>
-          <Route path="/pets/new" element={<NewPet/>}/>
+          <Route path="/client/:id/pets/new" element={<NewPet/>}/>
           <Route path="/petservices" element={<PetServices/>}/>
           <Route path='/petservices/new' element={<NewPetService/>}/>
           <Route path='/petservices/:id' element={<PetService/>}/>

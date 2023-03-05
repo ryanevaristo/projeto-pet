@@ -1,7 +1,7 @@
 import styles from "./SchedulerCard.module.css"
 import { Link } from "react-router-dom";
 import {BsPencil, BsFillTrashFill} from 'react-icons/bs'
-function ProjectCard({id, name, petservice, porte, raca, price, horario, date, func, dono, phone, handleRemove}) {
+function SchedulerCard({id, name, petservice, porte, raca, price, horario, date, func, handleRemove}) {
 
     const remove = (e) => {
         e.preventDefault()
@@ -39,4 +39,4 @@ function ProjectCard({id, name, petservice, porte, raca, price, horario, date, f
      );
 }
 
-export default ProjectCard;
+export default SchedulerCard;

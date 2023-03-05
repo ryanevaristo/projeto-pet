@@ -8,7 +8,6 @@ function Input({type, text, name, placeholder, handleOnChange, value, disabled})
             type={type} 
             name={name}
             id={name}
-
             placeholder={placeholder}
             onChange={handleOnChange}
             value={value}

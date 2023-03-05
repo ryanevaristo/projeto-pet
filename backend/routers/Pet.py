@@ -12,7 +12,7 @@ router = APIRouter()
 
 #POST pet 
 @router.post('/', status_code=status.HTTP_201_CREATED, response_model=PetSchemaCreate)
-async def post_pet(pet: PetSchema ,usuario_logado: UsuarioModel = Depends(get_current_user),db: AsyncSession = Depends(get_session)):
+async def post_pet(pet: PetSchema ,db: AsyncSession = Depends(get_session)):
     novo_pet: PetModel = PetModel(
         nome=pet.nome,
         raca=pet.raca,

@@ -4,13 +4,11 @@ import Input from '../form/Input';
 import styles from './SchedulerForm.module.css'
 import Select from '../form/Select';
 import SubmitButton from '../form/SubmitButton';
-import Select2 from '../form/Select2';
-import Select3 from '../form/Select3';
 
 
 function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
 
-    const [petservice, setPetService] = useState([])
+    const [servicos, setServicos] = useState([])
     const [scheduler , setScheduler] = useState(SchedulerData || {})
     const [horarios, SetHorarios] = useState([])
     const [pet, setPet] = useState([])
@@ -18,7 +16,7 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
     const [scheduler2, setScheduler2] = useState([])
 
     useEffect(() =>{
-        fetch("http://localhost:5000/funcionarios",
+        fetch("http://localhost:8000/usuarios",
     {
         method: "GET",
         headers:{
@@ -33,7 +31,7 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
 }, [])
 
     useEffect(() =>{
-        fetch("http://localhost:5000/scheduler",
+        fetch("http://localhost:8000/schedulers",
         {
             method: "GET",
             headers:{
@@ -48,7 +46,7 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
         }, [])
 
     useEffect(() =>{
-            fetch("http://localhost:5000/petservices",
+            fetch("http://localhost:8000/servicos",
         {
             method: "GET",
             headers:{
@@ -57,13 +55,13 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
         }
         ).then((resp) => resp.json())
         .then((data) => {
-            setPetService(data)
+            setServicos(data)
         })
         .catch((error) => console.log(error))
     }, [])
 
     useEffect(() =>{
-        fetch("http://localhost:5000/horarios",
+        fetch("http://localhost:8000/horarios",
     {
         method: "GET",
         headers:{
@@ -78,7 +76,7 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
 }, [])
 
     useEffect(() =>{
-        fetch("http://localhost:5000/pets",
+        fetch("http://localhost:8000/pets",
     {
         method: "GET",
         headers:{
@@ -98,68 +96,24 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
     }
 
     function handleChange(e) {
-        setScheduler({...scheduler, [e.target.name]: e.target.value? e.target.value : null})
-        console.log(e.target.value)
-        
-        
+        const allowedKeys = new Set(["pet_id", "servico_id", "dono_id", "horario_id","usuario_id"]);
+        const value = allowedKeys.has(e.target.name) ? parseInt(e.target.value) : e.target.value;
+        setScheduler({...scheduler, [e.target.name]: value});
     }
 
-    function handleHorario(e){
-        setScheduler({...scheduler, horarios: {
-            id: e.target.value,
-            name: e.target.options[e.target.selectedIndex].text,
-            disponivel: e.target.options[e.target.selectedIndex].dataset.disponivel
-        }})
-        console.log(JSON.stringify(e.target.options[e.target.selectedIndex].text))
-    }
-
-    function handleFunc(e){
-        setScheduler({...scheduler, funcionarios: {
-            id: e.target.value,
-            name: e.target.options[e.target.selectedIndex].text
-        }})
-        
-    }
-
-
-
-    function handleService(e) {
-        setScheduler({...scheduler, petservices: {
-            id: e.target.value,
-            name: e.target.options[e.target.selectedIndex].text,
-            price: e.target.options[e.target.selectedIndex].dataset.price
-        }})
-
-
-        
-        
-    }
-    function handlePet(e) {
-        setScheduler({...scheduler, pet: {
-            id: e.target.value,
-            name: e.target.options[e.target.selectedIndex].text,
-            raca: e.target.options[e.target.selectedIndex].dataset.raca,
-            porte: e.target.options[e.target.selectedIndex].dataset.porte
-        }
-    } )
     
-
-    }
-
 
 
     function filterSchedules(date) {
         // Filtra os agendamentos existentes com a data desejada
         const schedules = scheduler2.filter(schedule => {
-          return schedule.date === date;
+          return schedule.created_by === date;
         });
-        
         // Armazena os horários dos agendamentos encontrados
         let horarios = [];
         schedules.forEach(schedule => {
-          horarios.push(schedule.horarios.name);
+          horarios.push(schedule.horario_id);
         });
-        
         // Retorna os horários encontrados
         return horarios;
     }
@@ -167,11 +121,12 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
 
     return ( 
         <form onSubmit={submit} className={styles.form}>
-            <Select2 name="pet_id" 
+            <Select name="pet_id" 
             text="Nome do Pet" 
             options={pet}
-            handleOnChange={handlePet}
-            value={scheduler.pet ? scheduler.pet.id : ''} />
+            nome={"nome"}
+            handleOnChange={handleChange}
+            value={scheduler.pet_id ? scheduler.pet_id : ''} />
 
             <div className={styles.flex}>
             <Input
@@ -180,8 +135,12 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
                 name="pet"
                 placeholder="Raça do Pet"
                 disabled={true}
-                handleOnChange={handlePet}
-                value={scheduler.pet ? scheduler.pet.raca : ""}
+                handleOnChange={handleChange}
+                value={
+                    pet ? pet.map(
+                        (pet) => pet.id === scheduler.pet_id ? pet.raca : ""
+                    ) : ""
+                }
             />
 
             <Input
@@ -190,16 +149,21 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
                 name="porte"
                 placeholder="Porte do Pet"
                 disabled={true}
-                handleOnChange={handlePet}
-                value={scheduler.pet ? scheduler.pet.porte : ""}
+                handleOnChange={handleChange}
+                value={
+                    pet ? pet.map(
+                        (pet) => pet.id === scheduler.pet_id ? pet.porte : ""
+                    ) : ""
+                }
             />
             </div>
 
-            <Select name="service" 
+            <Select name="servico_id" 
             text="Selecione o tipo do Serviço" 
-            options={petservice}
-            handleOnChange={handleService}
-            value={scheduler.petservices ? scheduler.petservices.id : ''} />
+            options={servicos}
+            nome={"nome_servico"}
+            handleOnChange={handleChange}
+            value={scheduler.servico_id ? scheduler.servico_id : ''} />
 
             <Input
                 type="text"
@@ -208,22 +172,30 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
                 placeholder="Preço do Serviço"
                 disabled={true}
                 handleOnChange={handleChange}
-                value={scheduler.petservices ? "R$ "+ scheduler.petservices.price +",00" : ""}
+                value={
+                    servicos ? servicos.map(
+                        (servicos) => servicos.id === scheduler.servico_id ? "R$ " + servicos.valor + ",00" : ""
+                    ) : ""
+                }
             />
 
             <div className={styles.flex}>
                 <Input
                     type="date"
                     text="Data do Serviço"
-                    name="date"
+                    name="created_by"
                     placeholder="Data do Serviço"
+                    disabled={false}
                     handleOnChange={handleChange}
-                    value={scheduler.date ? scheduler.date : ""}
+                    value={scheduler.created_by ? scheduler.date : ''}
                 />
-                <Select3 name="horario" 
+
+                <Select 
+                name="horario_id" 
                 text="Horario disponivel" 
+                nome={"hora"}
                 options={horarios.filter((item) => {
-                   if (filterSchedules(scheduler.date).includes(item.name)) {
+                   if (filterSchedules(scheduler.created_by).includes(item.id)) {
                     return false;
                 }else{
                     return true;
@@ -233,16 +205,18 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
                 
             
             }
-                handleOnChange={handleHorario}
-                value={scheduler.horarios ? scheduler.horarios.id : ''} />
+                
+                handleOnChange={handleChange}
+                value={scheduler ? scheduler.horario_id : ''} />
             </div>
 
             <Select 
-            name="funcionario" 
+            name="usuario_id" 
             text="Selecione um Funcionario disponivel" 
             options={func}
-            handleOnChange={handleFunc}
-            value={scheduler.funcionarios ? scheduler.funcionarios.id : ''} />
+            nome={"nome"}
+            handleOnChange={handleChange}
+            value={scheduler.usuario_id ? scheduler.usuario_id : ''} />
             <SubmitButton text={btnText}/>
 
         </form>

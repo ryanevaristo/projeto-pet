@@ -4,11 +4,12 @@ import styles from './NewPet.module.css'
 
 function NewPet() {
   const navigate = useNavigate()
+  
 
   function createPost(project) {
     // initialize cost and services
 
-    fetch('http://localhost:5000/Pets', {
+    fetch('http://localhost:8000/pets', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

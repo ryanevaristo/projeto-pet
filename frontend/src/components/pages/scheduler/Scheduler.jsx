@@ -15,6 +15,10 @@ function Scheduler() {
     
     let hoje = new Date().toLocaleString().slice(0,10).split('/').reverse().join('-')
     const [scheduler, setScheduler] = useState([])
+    const [horarios, setHorarios] = useState([])
+    const [pet, setPet] = useState([])
+    const [func, setFunc] = useState([])
+    const [servicos, setServicos] = useState([])
     const [removeLoad, setRemoveLoad] = useState(false)
     const [projectMsg, setSchedulerMsg] = useState('')
     const [query , setQuery] = useState('')
@@ -28,7 +32,7 @@ function Scheduler() {
 
     useEffect(() => {
         setTimeout(() => {
-            fetch('http://localhost:5000/scheduler', {
+            fetch('http://localhost:8000/schedulers', {
             method:'GET',
             headers: {
                 'Content-Type' : 'application/json',
@@ -44,6 +48,67 @@ function Scheduler() {
         }, 1000)
         
 
+    },[])
+
+    useEffect(() => {
+        fetch('http://localhost:8000/horarios', {
+            method:'GET',
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+        })
+        .then((resp) => resp.json())
+        .then((data) => {
+            console.log(data)
+            setHorarios(data)
+        })
+        .catch((err) => console.log(err))
+    },[])
+
+    useEffect(() => {
+        fetch('http://localhost:8000/pets', {
+            method:'GET',
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+        })
+        .then((resp) => resp.json())
+        .then((data) => {
+            console.log(data)
+            setPet(data)
+        })
+        .catch((err) => console.log(err))
+    },[])
+
+    useEffect(() => {
+        fetch('http://localhost:8000/usuarios', {
+            method:'GET',
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+        })
+        .then((resp) => resp.json())
+        .then((data) => {
+            console.log(data)
+            setFunc(data)
+        })
+        .catch((err) => console.log(err))
+    },[])
+
+
+    useEffect(() => {
+        fetch('http://localhost:8000/servicos', {
+            method:'GET',
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+        })
+        .then((resp) => resp.json())
+        .then((data) => {
+            console.log(data)
+            setServicos(data)
+        })
+        .catch((err) => console.log(err))
     },[])
 
     const submit = (e) => {
@@ -107,7 +172,7 @@ function Scheduler() {
 
 
     function RemoveScheduler(id) {
-        fetch(`http://localhost:5000/scheduler/${id}`, {
+        fetch(`http://localhost:8000/schedulers/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -142,31 +207,95 @@ function Scheduler() {
             {message && <Message msg={message} type='success'/>}
             {projectMsg && <Message msg={projectMsg} type='success'/>}
             <Container customClass='start'>
-                
-                {scheduler.length > 0 &&
-                scheduler.filter(
-                    (scheduler) => scheduler.date.includes(query)
-                )
-                .map((scheduler) => (
-                    <SchedulerCard
+
+                    {/* {
+                        <SchedulerCard
+                        key={1}
+                        id={1}
+                        date={"2021-08-01"}
+                        petservice={
+                            "a"
+                        }
+                        porte={'gigante'}
+                        raca="vira-lata"
+                        servico="banho"
+                        func="João"
+                        removeScheduler={RemoveScheduler}
+                        horario="10:00"
+                        price="50"
+                        name="dulinho"
+
+                    />
+
+                } */
+                scheduler.length > 0 && scheduler.filter((scheduler) => {
+                    if (query === '') {
+                        return scheduler
+                    } else if (scheduler.created_by.includes(query)) {
+                        return scheduler
+                    }
+                }).map((scheduler) => {
+                    return (
+                        <SchedulerCard
                         key={scheduler.id}
                         id={scheduler.id}
-                        name={scheduler.pet.name}
-                        raca={scheduler.pet.raca}
-                        porte={scheduler.pet.porte}
-                        petservice={scheduler.petservices.name}
-                        price={scheduler.petservices.price}
-                        date={scheduler.date}
-                        horario={scheduler.horarios.name}
-                        func={scheduler.funcionarios.name}
-                        handleRemove={RemoveScheduler}
+                        date={scheduler.created_by}
+                        petservice={
+                            servicos.map((servico) => {
+                                if (servico.id === scheduler.servico_id) {
+                                    return servico.nome_servico
+                                }
+                                else{return 'Sem Serviço'}
+                            })
+                        }
+                        name= {pet.map((pet) => {
+                            if (pet.id === scheduler.pet_id) {
+                                return pet.nome
+                            }
+                            else{return 'Sem Pet'}
+                        })}
+                        porte={
+                            pet.map((pet) => {
+                                if (pet.id === scheduler.pet_id) {
+                                    return pet.porte
+                                }
+                                else{return 'Sem Pet'}
+                            })
+                        }
+                        raca={
+                            pet.map((pet) => {
+                                if (pet.id === scheduler.pet_id) {
+                                    return pet.raca
+                                }else{return 'Sem Pet'}
+                            })
+                        }
+                        func={
+                            func.map((func) => {
+                                if (func.id === scheduler.usuario_id) {
+                                    return func.nome
+                                }
+                                else{return 'Sem Funcionário'}
+                            })
+                        }
+                        removeScheduler={RemoveScheduler}
+                        horario={
+                            horarios.map((horario) => {
+                                if (horario.id === scheduler.horario_id) {
+                                    return horario.hora
+                                }else{return ' '}
+                            })
+                        }
+                        price={
+                            servicos.map((servico) => {
+                                if (servico.id === scheduler.servico_id) {
+                                    return servico.valor
+                                }else{return 'Sem Serviço'}
+                            })
+                        }
+
                     />
-    
-                ))
-
-
-                
-                
+                    )
+                    })
                 }
                 {!removeLoad && <Loading/>}
                 {removeLoad && scheduler.length === 0 && (

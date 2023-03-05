@@ -15,3 +15,10 @@ class PetModel(settings.DB_BASE_MODEL):
     observacoes = Column(String(256), nullable=True)
     dono_id = Column(Integer, ForeignKey('donos.id'))
     dono = relationship("DonoModel", back_populates="pets", lazy="joined")
+    pets = relationship(
+        "SchedulerModel",
+        back_populates="pet",
+        uselist=True,
+        lazy="joined",
+    )
+
