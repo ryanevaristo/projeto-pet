@@ -18,3 +18,9 @@
   .min-height {
     min-height: 75vh;
   }
+
+  .card {
+    justify-content: flex-start;
+    margin-left: 75vh;
+
+  }

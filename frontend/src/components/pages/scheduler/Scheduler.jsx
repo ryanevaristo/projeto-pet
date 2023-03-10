@@ -191,7 +191,7 @@ function Scheduler() {
     return ( 
         <div className={styles.project_container}> 
             <div className={styles.title_container}>
-                <h1>Agenda</h1>
+                <h1></h1>
                 <LinkButton to={'/scheduler/new'} text={"Adicionar Horário"}></LinkButton>
             </div>
             <div className={styles.filter_container}>
@@ -204,32 +204,12 @@ function Scheduler() {
                     <SubmitButton text={'Filtrar'}/>
                 </form>
             </div>
+            <br />
             {message && <Message msg={message} type='success'/>}
             {projectMsg && <Message msg={projectMsg} type='success'/>}
             <Container customClass='start'>
-
-                    {/* {
-                        <SchedulerCard
-                        key={1}
-                        id={1}
-                        date={"2021-08-01"}
-                        petservice={
-                            "a"
-                        }
-                        porte={'gigante'}
-                        raca="vira-lata"
-                        servico="banho"
-                        func="João"
-                        removeScheduler={RemoveScheduler}
-                        horario="10:00"
-                        price="50"
-                        name="dulinho"
-
-                    />
-
-                } */
-                scheduler.length > 0 && scheduler.filter((scheduler) => {
-                    if (query === '') {
+            {scheduler.length > 0 && scheduler.filter((scheduler) => {
+                    if (query === '' || query === undefined) {
                         return scheduler
                     } else if (scheduler.created_by.includes(query)) {
                         return scheduler
