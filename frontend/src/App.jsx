@@ -6,8 +6,6 @@ import NavBar from './components/layout/NavBar'
 import Home from './components/pages/Home'
 import Container from './components/layout/Container'
 import Scheduler from './components/pages/scheduler/Scheduler'
-import Footer from './components/layout/Footer'
-import Project from './components/pages/scheduler/Project'
 import NewPet from './components/pages/NewPet'
 import Clients from './components/pages/Clients.'
 import Client from './components/client/Client'
@@ -25,8 +23,12 @@ import Analytics from './components/pages/Analytics'
 function App() {
   return ( 
     
-
+    
     <Router>
+      
+      
+      <div className='h-10 bg-[#222]'></div>
+        
       <div style={{ display: 'flex' }}>
         <Sidebar/>
         <Container>
@@ -55,7 +57,6 @@ function App() {
             </Routes>
       </Container>
       </div>
-      <Footer/>
       
                 
     </Router>

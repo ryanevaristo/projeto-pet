@@ -14,17 +14,19 @@
     display: flex;
     justify-content: center;
     
+    
 }
 
 .filter_btn{
     margin: 0 1em;
     display: flex;
+    align-items: center;
 }
 .filter_btn input{
     margin-right: 1em;
     border-radius: .5em;
     width: 150px;
-    height: 30px;
+    height: 48px;
     
 
 }

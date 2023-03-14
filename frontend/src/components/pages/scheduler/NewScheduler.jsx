@@ -8,7 +8,7 @@ function NewScheduler() {
   function createPost(project) {
     // initialize cost and services
 
-    fetch('http://localhost:8000/schedulers', {
+    fetch('http://192.168.0.12:8000/schedulers', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

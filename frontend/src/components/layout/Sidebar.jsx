@@ -6,22 +6,26 @@ import { TbReportAnalytics } from 'react-icons/tb';
 import { AiOutlineUser, AiOutlineHeart } from 'react-icons/ai';
 import { FiMessageSquare } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive'
+//create toggle sidebar
+
 
 function Sidebar() {
   const menus = [
     { name: 'Dashboard', link: '/', icon: MdOutlineDashboard, margin: false },
-    { name: 'User', link: '/', icon: AiOutlineUser, margin: false },
-    { name: 'Minha Agenda', link: '/', icon: FiMessageSquare, margin: true },
-    { name: 'Dados Analiticos', link: '/', icon: TbReportAnalytics },
-    { name: 'Clientes', link: '/', icon: AiOutlineHeart, margin: false },
-    { name: 'Funcionarios', link: '/', icon: AiOutlineUser, margin: false },
+    // { name: 'User', link: '/', icon: AiOutlineUser, margin: false },
+    { name: 'Minha Agenda', link: '/scheduler', icon: FiMessageSquare, margin: true },
+    { name: 'Dados Analiticos', link: '/Analytics', icon: TbReportAnalytics },
+    { name: 'Clientes', link: '/Clients', icon: AiOutlineHeart, margin: false },
+    // { name: 'Funcionarios', link: '/', icon: AiOutlineUser, margin: false },
   ];
 
   const [open, setOpen] = useState(true);
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
     <div
-      className={`bg-[#0e0e0e] min-h-screen ${open ? 'w-72' : 'w-16'} text-gray-100 px-4 duration-500`}
+      className={`bg-[#222] min-h-screen ${open? 'w-72' : 'w-16'} ${isMobile? '':''} text-gray-100 px-4 duration-500`}
     >
       <div className="py-3 flex justify-end">
         <HiMenuAlt3

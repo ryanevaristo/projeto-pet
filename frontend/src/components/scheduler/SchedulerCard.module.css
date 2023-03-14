@@ -78,19 +78,16 @@
 
 .project_card_actions a,
 .project_card_actions button {
-    text-decoration: none;
-    border: none;
-    background-color: #fff;
+    background-color: #ffbb33;
     color: #222;
-    font-size: .9em;
-    padding: .6em 1em;
+    padding: .5em 1em;
+    border: none;
+    border-radius: 5px;
     margin-right: 1em;
-    cursor: pointer;
-    border: 1px solid #222;
+    text-decoration: none;
+    font-weight: bold;
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: 0.5s;
 }
 
 .project_card_actions svg {

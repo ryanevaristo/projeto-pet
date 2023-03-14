@@ -6,6 +6,7 @@
     transition: .05s;
     cursor: pointer;
     border: none;
+    border-radius: 0.5em;
 }
 
 .btn:hover {

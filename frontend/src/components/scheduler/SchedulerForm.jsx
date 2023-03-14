@@ -16,7 +16,7 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
     const [scheduler2, setScheduler2] = useState([])
 
     useEffect(() =>{
-        fetch("http://localhost:8000/usuarios",
+        fetch("http://192.168.0.12:8000/usuarios",
     {
         method: "GET",
         headers:{
@@ -31,7 +31,7 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
 }, [])
 
     useEffect(() =>{
-        fetch("http://localhost:8000/schedulers",
+        fetch("http://192.168.0.12:8000/schedulers",
         {
             method: "GET",
             headers:{
@@ -46,7 +46,7 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
         }, [])
 
     useEffect(() =>{
-            fetch("http://localhost:8000/servicos",
+            fetch("http://192.168.0.12:8000/servicos",
         {
             method: "GET",
             headers:{
@@ -61,7 +61,7 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
     }, [])
 
     useEffect(() =>{
-        fetch("http://localhost:8000/horarios",
+        fetch("http://192.168.0.12:8000/horarios",
     {
         method: "GET",
         headers:{
@@ -76,7 +76,7 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
 }, [])
 
     useEffect(() =>{
-        fetch("http://localhost:8000/pets",
+        fetch("http://192.168.0.12:8000/pets",
     {
         method: "GET",
         headers:{
@@ -179,7 +179,7 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
                 }
             />
 
-            <div className={styles.flex}>
+            <div className="flex justify-between space-x-2 ">
                 <Input
                     type="date"
                     text="Data do Serviço"
@@ -190,24 +190,26 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
                     value={scheduler.created_by ? scheduler.date : ''}
                 />
 
-                <Select 
-                name="horario_id" 
-                text="Horario disponivel" 
-                nome={"hora"}
-                options={horarios.filter((item) => {
-                   if (filterSchedules(scheduler.created_by).includes(item.id)) {
-                    return false;
-                }else{
-                    return true;
-                }
-            }
-                )
-                
-            
-            }
-                
-                handleOnChange={handleChange}
-                value={scheduler ? scheduler.horario_id : ''} />
+                <div className='h-12'>
+                    <Select
+                    name="horario_id" 
+                    text="Horario disponivel" 
+                    nome={"hora"}
+                    options={horarios.filter((item) => {
+                            if (filterSchedules(scheduler.created_by).includes(item.id)) {
+                                return false;
+                            }else{
+                                return true;
+                            }
+                        }
+                            )
+                            
+                        
+                    }
+                    
+                    handleOnChange={handleChange}
+                    value={scheduler ? scheduler.horario_id : ''} />
+                </div>
             </div>
 
             <Select 

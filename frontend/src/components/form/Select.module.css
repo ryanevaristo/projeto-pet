@@ -12,6 +12,7 @@
 .form_control select {
     padding: .7em;
     border-radius: .5em;
+    height: 48px;
 }
 
 .form_control select:focus {

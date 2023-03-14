@@ -32,7 +32,7 @@ function Scheduler() {
 
     useEffect(() => {
         setTimeout(() => {
-            fetch('http://localhost:8000/schedulers', {
+            fetch('http://192.168.0.12:8000/schedulers', {
             method:'GET',
             headers: {
                 'Content-Type' : 'application/json',
@@ -51,7 +51,7 @@ function Scheduler() {
     },[])
 
     useEffect(() => {
-        fetch('http://localhost:8000/horarios', {
+        fetch('http://192.168.0.12:8000/horarios', {
             method:'GET',
             headers: {
                 'Content-Type' : 'application/json',
@@ -66,7 +66,7 @@ function Scheduler() {
     },[])
 
     useEffect(() => {
-        fetch('http://localhost:8000/pets', {
+        fetch('http://192.168.0.12:8000/pets', {
             method:'GET',
             headers: {
                 'Content-Type' : 'application/json',
@@ -81,7 +81,7 @@ function Scheduler() {
     },[])
 
     useEffect(() => {
-        fetch('http://localhost:8000/usuarios', {
+        fetch('http://192.168.0.12:8000/usuarios', {
             method:'GET',
             headers: {
                 'Content-Type' : 'application/json',
@@ -97,7 +97,7 @@ function Scheduler() {
 
 
     useEffect(() => {
-        fetch('http://localhost:8000/servicos', {
+        fetch('http://192.168.0.12:8000/servicos', {
             method:'GET',
             headers: {
                 'Content-Type' : 'application/json',
@@ -172,7 +172,7 @@ function Scheduler() {
 
 
     function RemoveScheduler(id) {
-        fetch(`http://localhost:8000/schedulers/${id}`, {
+        fetch(`http://192.168.0.12:8000/schedulers/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
