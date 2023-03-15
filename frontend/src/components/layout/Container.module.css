@@ -9,6 +9,14 @@
   .start {
     justify-content: flex-start;
   }
+
+  .center {
+    margin-top: 2rem;
+    justify-content: space-evenly;
+    align-items: baseline;
+    background-color: pink;
+
+  }
   
   .column {
     flex-direction: column;

@@ -21,7 +21,7 @@ function Scheduler() {
     const [servicos, setServicos] = useState([])
     const [removeLoad, setRemoveLoad] = useState(false)
     const [projectMsg, setSchedulerMsg] = useState('')
-    const [query , setQuery] = useState('')
+    const [query , setQuery] = useState(hoje)
     
 
     const location = useLocation()
@@ -45,7 +45,7 @@ function Scheduler() {
             setRemoveLoad(true)
         })
         .catch((err) => console.log(err))
-        }, 1000)
+        }, 0)
         
 
     },[])

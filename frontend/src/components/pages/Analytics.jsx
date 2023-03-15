@@ -1,33 +1,48 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Container from '../layout/Container';
-
+//importe um icone para minhas finanças
+import {RiMoneyDollarCircleFill} from 'react-icons/ri';
+import {AiFillSchedule} from 'react-icons/ai';
 
 function Analytics() {
 
     return (
         <>
             
-                <Container customClass="start">
-                <div className="bg-white rounded-lg overflow-hidden shadow-lg h-60" style={{width:'30rem'}}>
-                <div class="px-4 py-3 border-b border-gray-200">
-                    <h2 class="text-2xl font-bold">name</h2>
-                    <p class="text-gray-600">Ryan Evaristo de Lima</p>
-                </div>
-                <div class="px-4 py-3 border-b border-gray-200 flex justify-between items-center">
-                    <div class="w-1/2">
-                    <div className="w-full h-40 bg-cover bg-center" style={{ backgroundImage: `url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIRyMpCY1M0sLMFFvGPODkFYTgDEWze2SrxB5VWiOA&s')` }}></div>
+<Container customClass="center">
+<div class="flex justify-center space-x-60">
+  <div class="w-2/3 bg-white rounded-md overflow-hidden shadow-lg p-5 flex">
+    <div class="flex items-center justify-center">
+      <AiFillSchedule size={80} color="#4F46E5"/>
+    </div>
+    <div class="px-4 py-4">
+      <h2 class="text-xl font-bold mb-2">Agendamentos</h2>
+      <h3 class="text-gray-600 text-lg">2000.</h3>
+    </div>
+  </div>
+  
+  <div class="w-1/3 bg-white rounded-lg overflow-hidden shadow-lg p-5">
+    <div class="flex items-center justify-center">
+      <RiMoneyDollarCircleFill size={80} color="#4F46E5"/>
+    </div>
+    <div class="px-4 py-4">
+      <h2 class="text-xl font-bold mb-2">Faturamento</h2>
+      <h3 class="text-gray-600 text-lg">5000.</h3>
+    </div>
+  </div>
+  
+  <div class="w-1/3 bg-white rounded-lg overflow-hidden shadow-lg p-5">
+    <div class="flex items-center justify-center">
+      <RiMoneyDollarCircleFill size={80} color="#4F46E5"/>
+    </div>
+    <div class="px-4 py-4">
+      <h2 class="text-xl font-bold mb-2">Despesas</h2>
+      <h3 class="text-gray-600 text-lg">5000.</h3>
+    </div>
+  </div>
+</div>
 
-                    </div>
-                    <div class="w-2/3 ml-4">
-                    <p class="text-gray-600 mb-2">date - horario</p>
-                    <p class="text-gray-600 mb-2">porte | raca</p>
-                    <p class="text-gray-600 mb-2">(79) 9999-9999</p>
-                    <p class="text-gray-600 mb-2">petservice</p>
-                    <p class="text-gray-600">R$price,00</p>
-                    </div>
-                </div>
-                </div>
                 </Container>
 
         </>
