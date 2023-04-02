@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-
+import axios from 'axios';
 import Input from '../form/Input';
 import styles from './SchedulerForm.module.css'
 import Select from '../form/Select';
 import SubmitButton from '../form/SubmitButton';
+import {Multiselect} from 'multiselect-react-dropdown';
 
 
 function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
@@ -12,83 +13,30 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
     const [scheduler , setScheduler] = useState(SchedulerData || {})
     const [horarios, SetHorarios] = useState([])
     const [pet, setPet] = useState([])
-    const[func, setFunc] = useState([])
+    const [func, setFunc] = useState([])
     const [scheduler2, setScheduler2] = useState([])
+    const [selectedItems, setSelectedItems] = useState([]);
+    const [, updateState] = useState();
 
-    useEffect(() =>{
-        fetch("http://192.168.0.12:8000/usuarios",
-    {
-        method: "GET",
-        headers:{
-            'Content-type': 'aplication/json'
-        }
-    }
-    ).then((resp) => resp.json())
-    .then((data) => {
-        setFunc(data)
-    })
-    .catch((error) => console.log(error))
-}, [])
-
-    useEffect(() =>{
-        fetch("http://192.168.0.12:8000/schedulers",
-        {
-            method: "GET",
-            headers:{
-                'Content-type': 'aplication/json'
-            }
-        }
-        ).then((resp) => resp.json())
-        .then((data) => {
-            setScheduler2(data)
+    useEffect(() => {
+        Promise.all([
+            axios.get('http://192.168.0.12:8000/usuarios'),
+            axios.get('http://192.168.0.12:8000/schedulers'),
+            axios.get('http://192.168.0.12:8000/servicos'),
+            axios.get('http://192.168.0.12:8000/horarios'),
+            axios.get('http://192.168.0.12:8000/pets')
+        ])
+        .then(([usuarios, schedulers, servicos, horarios, pets]) => {
+            setFunc(usuarios.data);
+            setScheduler2(schedulers.data);
+            setServicos(servicos.data);
+            SetHorarios(horarios.data);
+            setPet(pets.data);
         })
-        .catch((error) => console.log(error))
-        }, [])
-
-    useEffect(() =>{
-            fetch("http://192.168.0.12:8000/servicos",
-        {
-            method: "GET",
-            headers:{
-                'Content-type': 'aplication/json'
-            }
-        }
-        ).then((resp) => resp.json())
-        .then((data) => {
-            setServicos(data)
-        })
-        .catch((error) => console.log(error))
-    }, [])
-
-    useEffect(() =>{
-        fetch("http://192.168.0.12:8000/horarios",
-    {
-        method: "GET",
-        headers:{
-            'Content-type': 'aplication/json'
-        }
-    }
-    ).then((resp) => resp.json())
-    .then((data) => {
-        SetHorarios(data)
-    })
-    .catch((error) => console.log(error))
-}, [])
-
-    useEffect(() =>{
-        fetch("http://192.168.0.12:8000/pets",
-    {
-        method: "GET",
-        headers:{
-            'Content-type': 'aplication/json'
-        }
-    }
-    ).then((resp) => resp.json())
-    .then((data) => {
-        setPet(data)
-    })
-    .catch((error) => console.log(error))
-    }, [])
+        .catch(error => {
+            console.log('Erro ao buscar dados:', error);
+        });
+    }, []);
 
     const submit = (e) => {
         e.preventDefault()
@@ -96,14 +44,11 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
     }
 
     function handleChange(e) {
-        const allowedKeys = new Set(["pet_id", "servico_id", "dono_id", "horario_id","usuario_id"]);
+        const allowedKeys = new Set(["pet_id", "servico_id", "dono_id", "horario_id","usuario_id", "valor"]);
         const value = allowedKeys.has(e.target.name) ? parseInt(e.target.value) : e.target.value;
         setScheduler({...scheduler, [e.target.name]: value});
+        console.log(scheduler)
     }
-
-    
-
-
     function filterSchedules(date) {
         // Filtra os agendamentos existentes com a data desejada
         const schedules = scheduler2.filter(schedule => {
@@ -117,6 +62,30 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
         // Retorna os horários encontrados
         return horarios;
     }
+
+    
+
+    const handleSelect = (selected) => {
+        setSelectedItems(selected);
+        
+        updateState({});
+        console.log(scheduler)
+        
+    };
+    const handleRemove = (removedItem) => {
+        setSelectedItems(selectedItems.filter(item => item !== removedItem));
+        updateState({});
+    };
+    
+
+  const somaValoresSelecionados = () => {
+        let total = 0;
+        selectedItems.forEach((item) => {
+            total += item.valor;
+        });
+        
+        return total;
+    };
       
 
     return ( 
@@ -137,9 +106,9 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
                 disabled={true}
                 handleOnChange={handleChange}
                 value={
-                    pet ? pet.map(
-                        (pet) => pet.id === scheduler.pet_id ? pet.raca : ""
-                    ) : ""
+                    pet ? pet.find(
+                        (pet) => pet.id === scheduler.pet_id
+                    )?.raca : ""
                 }
             />
 
@@ -151,19 +120,25 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
                 disabled={true}
                 handleOnChange={handleChange}
                 value={
-                    pet ? pet.map(
-                        (pet) => pet.id === scheduler.pet_id ? pet.porte : ""
-                    ) : ""
+                    pet ? pet.find(
+                        (pet) => pet.id === scheduler.pet_id
+                    )?.porte : ""
                 }
             />
             </div>
 
-            <Select name="servico_id" 
-            text="Selecione o tipo do Serviço" 
-            options={servicos}
-            nome={"nome_servico"}
-            handleOnChange={handleChange}
-            value={scheduler.servico_id ? scheduler.servico_id : ''} />
+            <Multiselect
+            displayValue="nome_servico"
+            isObject={true}
+            optionLabel="nome_servico"
+            onKeyPressFn={function noRefCheck(){}}
+            onSearch={function noRefCheck(){}}
+            onSelect={handleSelect}
+            onRemove={handleRemove}
+            onSubmit={function noRefCheck(){}}
+            options={servicos || []} 
+            />
+
 
             <Input
                 type="text"
@@ -171,12 +146,11 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
                 name="price"
                 placeholder="Preço do Serviço"
                 disabled={true}
-                handleOnChange={handleChange}
-                value={
-                    servicos ? servicos.map(
-                        (servicos) => servicos.id === scheduler.servico_id ? "R$ " + servicos.valor + ",00" : ""
-                    ) : ""
-                }
+                handleOnChange={handleSelect}
+                value={"R$"+somaValoresSelecionados()+",00"}
+                
+
+              
             />
 
             <div className="flex justify-between space-x-2 ">
@@ -220,6 +194,7 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
             handleOnChange={handleChange}
             value={scheduler.usuario_id ? scheduler.usuario_id : ''} />
             <SubmitButton text={btnText}/>
+            <h2><p>Valor total selecionado: R$ {somaValoresSelecionados() }</p></h2>
 
         </form>
         
