@@ -44,7 +44,7 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
     }
 
     function handleChange(e) {
-        const allowedKeys = new Set(["pet_id", "servico_id", "dono_id", "horario_id","usuario_id", "valor"]);
+        const allowedKeys = new Set(["pet_id", "servico_id", "dono_id", "horario_id","usuario_id"]);
         const value = allowedKeys.has(e.target.name) ? parseInt(e.target.value) : e.target.value;
         setScheduler({...scheduler, [e.target.name]: value});
         console.log(scheduler)
@@ -67,7 +67,13 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
 
     const handleSelect = (selected) => {
         setSelectedItems(selected);
-        
+        let string_name;
+        let servico_name = selected.map((item) => string_name = item.nome_servico);
+
+        let total2 = somaValoresSelecionados();
+
+        setScheduler({...scheduler, ["total"]: total2,
+        ["nome_servico"]: String(servico_name),});
         updateState({});
         console.log(scheduler)
         
@@ -83,7 +89,6 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
         selectedItems.forEach((item) => {
             total += item.valor;
         });
-        
         return total;
     };
       
@@ -128,9 +133,12 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
             </div>
 
             <Multiselect
+            showArrow={true}
+            style={{ chips: { background: "pink" },  searchBox: { background: "white", border:"1em", padding: "0.7em" } }}
             displayValue="nome_servico"
             isObject={true}
-            optionLabel="nome_servico"
+            placeholder=''
+            searchBox={true}
             onKeyPressFn={function noRefCheck(){}}
             onSearch={function noRefCheck(){}}
             onSelect={handleSelect}

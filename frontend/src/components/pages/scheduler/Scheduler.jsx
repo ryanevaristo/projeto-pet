@@ -225,28 +225,28 @@ function Scheduler() {
                                 if (servico.id === scheduler.servico_id) {
                                     return servico.nome_servico
                                 }
-                                else{return 'Sem Serviço'}
+                                
                             })
                         }
                         name= {pet.map((pet) => {
                             if (pet.id === scheduler.pet_id) {
                                 return pet.nome
                             }
-                            else{return 'Sem Pet'}
+                            
                         })}
                         porte={
                             pet.map((pet) => {
                                 if (pet.id === scheduler.pet_id) {
                                     return pet.porte
                                 }
-                                else{return 'Sem Pet'}
+                                
                             })
                         }
                         raca={
                             pet.map((pet) => {
                                 if (pet.id === scheduler.pet_id) {
                                     return pet.raca
-                                }else{return 'Sem Pet'}
+                                }
                             })
                         }
                         func={
@@ -254,7 +254,7 @@ function Scheduler() {
                                 if (func.id === scheduler.usuario_id) {
                                     return func.nome
                                 }
-                                else{return 'Sem Funcionário'}
+                                
                             })
                         }
                         removeScheduler={RemoveScheduler}
@@ -269,7 +269,7 @@ function Scheduler() {
                             servicos.map((servico) => {
                                 if (servico.id === scheduler.servico_id) {
                                     return servico.valor
-                                }else{return 'Sem Serviço'}
+                                }
                             })
                         }
 
