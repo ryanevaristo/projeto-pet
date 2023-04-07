@@ -178,7 +178,7 @@ function Scheduler() {
                 <h1></h1>
                 <LinkButton to={'/scheduler/new'} text={"Adicionar Horário"}></LinkButton>
             </div>
-            <div className={styles.filter_container}>
+            <div className={styles.days_container}>
                 <DayButton text={daysWeek(0)} onClick={dayClick}/>  <DayButton text={daysWeek(1)} onClick={dayClick}/>  
                 <DayButton text={daysWeek(2)} onClick={dayClick}/>  <DayButton text={daysWeek(3)} onClick={dayClick}/> 
                 <DayButton text={daysWeek(4)} onClick={dayClick}/>  <DayButton text={daysWeek(5)} onClick={dayClick}/> 

@@ -36,7 +36,7 @@ function SchedulerCard({id, name, petservice, porte, raca, price, horario, date,
         //         </button>
         //     </div>
         // </div>
-    <div className="px-2">
+    <div className="px-2 mb-6">
         <div className="bg-white rounded-lg overflow-hidden shadow-lg w-max" style={{width:'30rem'}}>
   <div class="px-4 py-3 border-b border-gray-200">
     <h2 class="text-2xl font-bold">{name}</h2>

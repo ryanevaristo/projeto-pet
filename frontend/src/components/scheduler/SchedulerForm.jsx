@@ -69,17 +69,18 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
         setSelectedItems(selected);
       
         // Obter o nome do serviço selecionado
-        const servico_nome = selected.map((item) => item.nome_servico).join(", ");
+        const servico_name = selected.map((item) => item.nome_servico).join(", ");
+        servico_name.trim();
       
         const servico_id=1;
         // Obter o valor total selecionado
         const valor_final = somaValoresSelecionados();
       
-        // Atualizar as propriedades "servico_nome" e "valor_final" do objeto "scheduler"
+        // Atualizar as propriedades "servico_name" e "valor_final" do objeto "scheduler"
         setScheduler({
           ...scheduler,
           servico_id,
-          servico_nome,
+          servico_name,
           valor_final,
         });
       
