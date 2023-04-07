@@ -48,7 +48,7 @@ function SchedulerCard({id, name, petservice, porte, raca, price, horario, date,
 
     </div>
     <div class="w-2/3 ml-4">
-      <p class="text-gray-600 mb-2">{date} - {horario}</p>
+      <p class="text-gray-600 mb-2">{date? date.split('-').reverse().join('/'): ''} - {horario}</p>
       <p class="text-gray-600 mb-2">{porte} | {raca}</p>
       <p class="text-gray-600 mb-2">(79) 9999-9999</p>
       <p class="text-gray-600 mb-2">{petservice}</p>

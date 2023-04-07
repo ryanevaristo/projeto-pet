@@ -243,7 +243,7 @@ function Scheduler() {
                         horario={
                             horarios.length > 0 ? horarios.map((horario) => {
                                 if (horario.id === scheduler.horario_id) {
-                                    return horario.horario
+                                    return horario.hora
                                 }
                             }) : "Sem valor"
                             
