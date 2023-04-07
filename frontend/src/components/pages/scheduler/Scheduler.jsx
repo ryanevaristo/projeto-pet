@@ -18,7 +18,6 @@ function Scheduler() {
     const [horarios, setHorarios] = useState([])
     const [pet, setPet] = useState([])
     const [func, setFunc] = useState([])
-    const [servicos, setServicos] = useState([])
     const [removeLoad, setRemoveLoad] = useState(false)
     const [projectMsg, setSchedulerMsg] = useState('')
     const [query , setQuery] = useState(hoje)
@@ -95,21 +94,6 @@ function Scheduler() {
         .catch((err) => console.log(err))
     },[])
 
-
-    useEffect(() => {
-        fetch('http://192.168.0.12:8000/servicos', {
-            method:'GET',
-            headers: {
-                'Content-Type' : 'application/json',
-            },
-        })
-        .then((resp) => resp.json())
-        .then((data) => {
-            console.log(data)
-            setServicos(data)
-        })
-        .catch((err) => console.log(err))
-    },[])
 
     const submit = (e) => {
         e.preventDefault()
@@ -211,9 +195,10 @@ function Scheduler() {
             {scheduler.length > 0 && scheduler.filter((scheduler) => {
                     if (query === '' || query === undefined) {
                         return scheduler
-                    } else if (scheduler.created_by.includes(query)) {
-                        return scheduler
                     }
+                    // } else if (scheduler.created_by.includes(query)) {
+                    //     return scheduler
+                    // }
                 }).map((scheduler) => {
                     return (
                         <SchedulerCard
@@ -221,56 +206,50 @@ function Scheduler() {
                         id={scheduler.id}
                         date={scheduler.created_by}
                         petservice={
-                            servicos.map((servico) => {
-                                if (servico.id === scheduler.servico_id) {
-                                    return servico.nome_servico
-                                }
-                                
-                            })
+                            scheduler.servico_name
+
                         }
-                        name= {pet.map((pet) => {
+                        name= {pet.length > 0 ? pet.map((pet) => {
                             if (pet.id === scheduler.pet_id) {
                                 return pet.nome
                             }
                             
-                        })}
+                        }) : "Sem valor"
+                    }
                         porte={
-                            pet.map((pet) => {
+                            pet.length > 0 ? pet.map((pet) => {
                                 if (pet.id === scheduler.pet_id) {
                                     return pet.porte
                                 }
-                                
-                            })
+                            }) : "Sem valor"
                         }
+
                         raca={
-                            pet.map((pet) => {
+                            pet.length > 0 ? pet.map((pet) => {
                                 if (pet.id === scheduler.pet_id) {
                                     return pet.raca
                                 }
-                            })
+                            }) : "Sem valor"
                         }
                         func={
-                            func.map((func) => {
-                                if (func.id === scheduler.usuario_id) {
+                            func.length > 0 ? func.map((func) => {
+                                if (func.id === scheduler.funcionario_id) {
                                     return func.nome
                                 }
-                                
-                            })
+                            }
+                            ) : "Sem valor"
                         }
                         removeScheduler={RemoveScheduler}
                         horario={
-                            horarios.map((horario) => {
+                            horarios.length > 0 ? horarios.map((horario) => {
                                 if (horario.id === scheduler.horario_id) {
-                                    return horario.hora
-                                }else{return ' '}
-                            })
+                                    return horario.horario
+                                }
+                            }) : "Sem valor"
+                            
                         }
                         price={
-                            servicos.map((servico) => {
-                                if (servico.id === scheduler.servico_id) {
-                                    return servico.valor
-                                }
-                            })
+                            scheduler.valor_final
                         }
 
                     />
@@ -282,6 +261,7 @@ function Scheduler() {
                     <p>Sem Horários:(</p>
                 )}
             </Container>
+            {console.log(scheduler)}
            
         </div>
      );

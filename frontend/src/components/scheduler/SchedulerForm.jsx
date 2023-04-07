@@ -44,7 +44,7 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
     }
 
     function handleChange(e) {
-        const allowedKeys = new Set(["pet_id", "servico_id", "dono_id", "horario_id","usuario_id"]);
+        const allowedKeys = new Set(["pet_id", "dono_id", "horario_id","usuario_id"]);
         const value = allowedKeys.has(e.target.name) ? parseInt(e.target.value) : e.target.value;
         setScheduler({...scheduler, [e.target.name]: value});
         console.log(scheduler)
@@ -67,17 +67,27 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
 
     const handleSelect = (selected) => {
         setSelectedItems(selected);
-        let string_name;
-        let servico_name = selected.map((item) => string_name = item.nome_servico);
-
-        let total2 = somaValoresSelecionados();
-
-        setScheduler({...scheduler, ["total"]: total2,
-        ["nome_servico"]: String(servico_name),});
-        updateState({});
-        console.log(scheduler)
-        
-    };
+      
+        // Obter o nome do serviço selecionado
+        const servico_nome = selected.map((item) => item.nome_servico).join(", ");
+      
+        const servico_id=1;
+        // Obter o valor total selecionado
+        const valor_final = somaValoresSelecionados();
+      
+        // Atualizar as propriedades "servico_nome" e "valor_final" do objeto "scheduler"
+        setScheduler({
+          ...scheduler,
+          servico_id,
+          servico_nome,
+          valor_final,
+        });
+      
+        // Atualizar o estado do componente
+        updateState();
+      
+        console.log(scheduler);
+      };
     const handleRemove = (removedItem) => {
         setSelectedItems(selectedItems.filter(item => item !== removedItem));
         updateState({});
@@ -202,7 +212,6 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
             handleOnChange={handleChange}
             value={scheduler.usuario_id ? scheduler.usuario_id : ''} />
             <SubmitButton text={btnText}/>
-            <h2><p>Valor total selecionado: R$ {somaValoresSelecionados() }</p></h2>
 
         </form>
         

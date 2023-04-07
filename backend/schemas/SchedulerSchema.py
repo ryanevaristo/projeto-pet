@@ -9,13 +9,12 @@ from pydantic import BaseModel
 class SchedulerSchema(BaseModel):
     id: Optional[int]
     usuario_id: Optional[int] # funcionario
+    servico_name: Optional[str]
     servico_id: Optional[int]
     pet_id: Optional[int] # pet
     horario_id: Optional[int] # horario
-    num_pedido: int | None = None
-    valor_adicional: float | None = 0.0
     valor_final: float | None = 0.0
-    ativo: bool = False
+    ativo: bool = True
 
     class Config:
         orm_mode = True
