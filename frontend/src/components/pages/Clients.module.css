@@ -2,13 +2,21 @@
     padding: 1.5em;
 }
 
+.cliente_title {
+    padding-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
 .title_container {
+    padding-top: 0.1rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin-bottom: 2em;
     align-items: center;
 
 }
+
 
 .filter_container {
     display: flex;

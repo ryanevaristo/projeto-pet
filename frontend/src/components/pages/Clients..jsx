@@ -25,22 +25,22 @@ function Clients() {
     useEffect(() => {
         setTimeout(() => {
             fetch('http://192.168.0.12:8000/donos', {
-            method:'GET',
-            headers: {
-                'Content-Type' : 'application/json',
-            },
-        })
-        .then((resp) => resp.json())
-        .then((data) => {
-            console.log(data)
-            setClients(data)
-            setRemoveLoad(true)
-        })
-        .catch((err) => console.log(err))
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then((resp) => resp.json())
+                .then((data) => {
+                    console.log(data)
+                    setClients(data)
+                    setRemoveLoad(true)
+                })
+                .catch((err) => console.log(err))
         }, 1000)
-        
 
-    },[])
+
+    }, [])
 
 
     function RemoveClients(id) {
@@ -51,44 +51,46 @@ function Clients() {
             },
 
         }).then(resp => resp.json())
-        .then(data => {
-            setClients(clients.filter((project) => project.id !== id))
-            setProjectMsg('Cliente removido com sucesso!')
-        })
-        .cath(err => console.log(err))
-        
+            .then(data => {
+                setClients(clients.filter((project) => project.id !== id))
+                setProjectMsg('Cliente removido com sucesso!')
+            })
+            .cath(err => console.log(err))
+
     }
 
-    return ( 
-        <div className={styles.project_container}> 
-            <div className={styles.title_container}>
+    return (
+        <div className={styles.project_container}>
+            <div className={styles.cliente_title}>
                 <h1>Clientes</h1>
+            </div>
+            <div className={styles.title_container}>
                 <LinkButton to={'/clients/new'} text={"Adicionar novo cliente"}></LinkButton>
             </div>
-            {message && <Message msg={message} type='success'/>}
-            {projectMsg && <Message msg={projectMsg} type='success'/>}
+            {message && <Message msg={message} type='success' />}
+            {projectMsg && <Message msg={projectMsg} type='success' />}
             <Container customClass='start'>
                 {clients.length > 0 &&
-                clients.map((clients) => (
-                    <ClientCard
-                    key={clients.id}
-                    id={clients.id}
-                    name={clients.nome}
-                    cpf={"cpf"}
-                    phone={clients.telefone}
-                    email={clients.email}
-                    endereco={clients.endereco}
-                    handleRemove={RemoveClients}
-                    />
-                ))}
-                {!removeLoad && <Loading/>}
+                    clients.map((clients) => (
+                        <ClientCard
+                            key={clients.id}
+                            id={clients.id}
+                            name={clients.nome}
+                            cpf={"cpf"}
+                            phone={clients.telefone}
+                            email={clients.email}
+                            endereco={clients.endereco}
+                            handleRemove={RemoveClients}
+                        />
+                    ))}
+                {!removeLoad && <Loading />}
                 {removeLoad && clients.length === 0 && (
                     <p>Sem Clientes:(</p>
                 )}
             </Container>
-           
+
         </div>
-     );
+    );
 }
 
 export default Clients;

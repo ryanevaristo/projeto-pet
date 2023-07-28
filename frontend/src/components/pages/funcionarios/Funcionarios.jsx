@@ -25,22 +25,22 @@ function Funcionarios() {
     useEffect(() => {
         setTimeout(() => {
             fetch('http://localhost:5000/funcionarios', {
-            method:'GET',
-            headers: {
-                'Content-Type' : 'application/json',
-            },
-        })
-        .then((resp) => resp.json())
-        .then((data) => {
-            console.log(data)
-            setFuncionarios(data)
-            setRemoveLoad(true)
-        })
-        .catch((err) => console.log(err))
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then((resp) => resp.json())
+                .then((data) => {
+                    console.log(data)
+                    setFuncionarios(data)
+                    setRemoveLoad(true)
+                })
+                .catch((err) => console.log(err))
         }, 1000)
-        
 
-    },[])
+
+    }, [])
 
 
     function RemoveFunc(id) {
@@ -51,44 +51,46 @@ function Funcionarios() {
             },
 
         }).then(resp => resp.json())
-        .then(data => {
-            setFuncionarios(funcionarios.filter((project) => project.id !== id))
-            setFuncMsg('Cliente removido com sucesso!')
-        })
-        .cath(err => console.log(err))
-        
+            .then(data => {
+                setFuncionarios(funcionarios.filter((project) => project.id !== id))
+                setFuncMsg('Cliente removido com sucesso!')
+            })
+            .cath(err => console.log(err))
+
     }
 
-    return ( 
-        <div className={styles.project_container}> 
-            <div className={styles.title_container}>
+    return (
+        <div className={styles.project_container}>
+            <div className={styles.funcionario_title}>
                 <h1>Funcionários</h1>
+            </div>
+            <div className={styles.title_container}>
                 <LinkButton to={'/funcionarios/new'} text={"Adicionar novo funcionário"}></LinkButton>
             </div>
-            {message && <Message msg={message} type='success'/>}
-            {funcMsg && <Message msg={funcMsg} type='success'/>}
+            {message && <Message msg={message} type='success' />}
+            {funcMsg && <Message msg={funcMsg} type='success' />}
             <Container customClass='start'>
                 {funcionarios.length > 0 &&
-                funcionarios.map((funcionarios) => (
-                    <FuncionarioCard
-                    key={funcionarios.id}
-                    id={funcionarios.id}
-                    name={funcionarios.name}
-                    cpf={funcionarios.cpf}
-                    phone={funcionarios.phone}
-                    email={funcionarios.email}
-                    endereco={funcionarios.endereco}
-                    handleRemove={RemoveFunc}
-                    />
-                ))}
-                {!removeLoad && <Loading/>}
+                    funcionarios.map((funcionarios) => (
+                        <FuncionarioCard
+                            key={funcionarios.id}
+                            id={funcionarios.id}
+                            name={funcionarios.name}
+                            cpf={funcionarios.cpf}
+                            phone={funcionarios.phone}
+                            email={funcionarios.email}
+                            endereco={funcionarios.endereco}
+                            handleRemove={RemoveFunc}
+                        />
+                    ))}
+                {!removeLoad && <Loading />}
                 {removeLoad && funcionarios.length === 0 && (
                     <p>Sem Clientes:(</p>
                 )}
             </Container>
-           
+
         </div>
-     );
+    );
 }
 
 export default Funcionarios;

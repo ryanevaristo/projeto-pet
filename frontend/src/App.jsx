@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Company from './components/pages/Company'
 import NewClient from './components/pages/NewClient'
 import Contact from './components/pages/Contact'
@@ -21,47 +21,48 @@ import EditScheduler from './components/pages/scheduler/EditScheduler'
 import Sidebar from './components/layout/Sidebar'
 import Analytics from './components/pages/Analytics'
 function App() {
-  return ( 
-    
-    
+  return (
+
+
     <Router>
-      
-      
+
+
       <div className='h-10 bg-[#222]'></div>
-        
+
       <div style={{ display: 'flex' }}>
-        <Sidebar/>
+        <NavBar />
+        <Sidebar />
         <Container>
           <Routes>
-            
-              <Route path="/home" element={<Sidebar/>}/>
-              <Route path="/" element={<Home/>}/>
-              <Route path="/contact" element={<Contact/>}/>
-              <Route path="/company" element={<Company/>}/>
-              <Route path="/clients/new" element={<NewClient/>}/>
-              <Route path="/clients" element={<Clients/>}/>
-              <Route path="/client/:id" element={<Client/>}/>
-              <Route path="/scheduler" element={<Scheduler/>}/>
-              <Route path="/scheduler/new" element={<NewScheduler/>}/>
-              <Route path="/scheduler/:id" element={<EditScheduler/>}/>
-              <Route path="*" element={<h1>404 - Not Found</h1>}/>
-              <Route path="/pets" element={<Pets/>}/>
-              <Route path="/client/:id/pets/new" element={<NewPet/>}/>
-              <Route path="/petservices" element={<PetServices/>}/>
-              <Route path='/petservices/new' element={<NewPetService/>}/>
-              <Route path='/petservices/:id' element={<PetService/>}/>
-              <Route path='/funcionarios' element={<Funcionarios/>}/>
-              <Route path='/funcionarios/new' element={<NewFuncionario/>}/>
-              <Route path='/funcionario/:id' element={<Funcionario/>}/>
-              <Route path='/Analytics' element={<Analytics/>}/>
-            </Routes>
-      </Container>
+
+            <Route path="/home" element={<Sidebar />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/company" element={<Company />} />
+            <Route path="/clients/new" element={<NewClient />} />
+            <Route path="/clients" element={<Clients />} />
+            <Route path="/client/:id" element={<Client />} />
+            <Route path="/scheduler" element={<Scheduler />} />
+            <Route path="/scheduler/new" element={<NewScheduler />} />
+            <Route path="/scheduler/:id" element={<EditScheduler />} />
+            <Route path="*" element={<h1>404 - Not Found</h1>} />
+            <Route path="/pets" element={<Pets />} />
+            <Route path="/client/:id/pets/new" element={<NewPet />} />
+            <Route path="/petservices" element={<PetServices />} />
+            <Route path='/petservices/new' element={<NewPetService />} />
+            <Route path='/petservices/:id' element={<PetService />} />
+            <Route path='/funcionarios' element={<Funcionarios />} />
+            <Route path='/funcionarios/new' element={<NewFuncionario />} />
+            <Route path='/funcionario/:id' element={<Funcionario />} />
+            <Route path='/Analytics' element={<Analytics />} />
+          </Routes>
+        </Container>
       </div>
-      
-                
+
+
     </Router>
 
-   );
+  );
 }
 
 export default App;

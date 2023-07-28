@@ -3,6 +3,7 @@
 }
 
 .title_container {
+    padding-top: 1rem;
     display: flex;
     justify-content: space-around;
     margin-bottom: 2em;
@@ -13,33 +14,37 @@
 .filter_container {
     display: flex;
     justify-content: center;
-    
-    
+
+
 }
 
-.filter_btn{
+.filter_btn {
     margin: 0 1em;
     display: flex;
     align-items: center;
 }
-.filter_btn input{
+
+.filter_btn input {
     margin-right: 1em;
     border-radius: .5em;
     width: 150px;
     height: 48px;
-    
+
 
 }
-.filter_btn button{
-    
+
+.filter_btn button {
+
     margin-left: 1em;
 }
+
 .days_container {
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
 }
+
 .days_container .DayButton {
     width: 100px;
     height: 50px;
@@ -51,6 +56,7 @@
     font-size: 18px;
     color: #333;
 }
+
 .days_container .DayButton:hover {
     background-color: #eee;
     cursor: pointer;
