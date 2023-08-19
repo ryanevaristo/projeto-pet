@@ -30,7 +30,7 @@ function App() {
       <div className='h-10 bg-[#222]'></div>
 
       <div style={{ display: 'flex' }}>
-        <NavBar />
+
         <Sidebar />
         <Container>
           <Routes>
