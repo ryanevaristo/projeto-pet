@@ -1,6 +1,7 @@
 .project_container {
     padding: 1.5em;
     position: relative;
+    background-color: pink;
 }
 
 .cliente_title {
@@ -10,7 +11,7 @@
 }
 
 .title_container {
-    padding: 1rem;
+    padding: 0.1rem;
     display: flex;
     justify-content: flex;
     margin-bottom: 2em;
