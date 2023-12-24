@@ -1,12 +1,13 @@
 .newproject_container {
-    width: 1500px;
+    width: 450px;
     margin: 0 auto;
     padding: 3em;
-    background-color: pink;
+    background-color: rgba(207, 207, 207, 0);
 }
 
 .newproject_container h1 {
     margin-bottom: 0.5em;
+    
 }
 
 .newproject_container p {

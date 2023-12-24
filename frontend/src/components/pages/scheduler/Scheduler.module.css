@@ -1,6 +1,7 @@
 .project_container {
     padding: 1.5em;
-    background-color: pink;
+    background-color: rgba(207, 207, 207, 0);
+    max-width: 1200px;
 }
 
 .title_container {
@@ -15,7 +16,7 @@
 .filter_container {
     display: flex;
     justify-content: center;
-
+    align-items: center;
 
 }
 
@@ -30,6 +31,7 @@
     border-radius: .5em;
     width: 150px;
     height: 48px;
+    align-items: center;
 
 
 }
@@ -43,7 +45,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .days_container .DayButton {

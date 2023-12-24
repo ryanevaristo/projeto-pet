@@ -16,6 +16,7 @@ function Sidebar() {
     // { name: 'User', link: '/', icon: AiOutlineUser, margin: false },
     { name: 'Minha Agenda', link: '/scheduler', icon: FiMessageSquare, margin: true },
     { name: 'Meus Clientes', link: '/clients', icon: FiUsers },
+    {name: 'Pets', link: '/pets', icon: FiUsers},
     { name: 'Novo Cliente', link: '/clients/new', icon: FiUser },
     { name: 'Dados Analiticos', link: '/Analytics', icon: TbReportAnalytics },
     { name: 'Serviços', link: '/petservices', icon: AiFillSnippets },
@@ -37,11 +38,11 @@ function Sidebar() {
           onClick={() => setOpen(!open)}
         />
       </div>
-      <div className="relative flex flex-col gap-4 mt-4">
+      <div className="relative flex flex-col gap-4 mt-6">
         {menus.map((menu, index) => (
           <Link to={menu.link} key={index}>
             <div
-              className={`${menu.margin && 'mt-5'
+              className={`${menu.margin && 'mt-10'
                 } flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md cursor-pointer`}
             >
               <div>

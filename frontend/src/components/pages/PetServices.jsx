@@ -4,10 +4,11 @@ import LinkButton from "../layout/LinkButton";
 
 import { useLocation } from "react-router-dom";
 
-import styles from './Pets.module.css'
+//import styles from './Pets.module.css'
 import { useState, useEffect } from "react";
 import Loading from "../layout/Loading";
 import PetServiceCard from "../pet_services/PetServiceCard";
+import styles from './PetServices.module.css';
 
 
 function PetServices() {

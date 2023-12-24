@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import Container from '../layout/Container';
 //importe um icone para minhas finanças
 import { RiMoneyDollarCircleFill } from 'react-icons/ri';
@@ -12,10 +12,10 @@ function Analytics() {
 
       <Container customClass="center">
         <div class="p-8">
-          <div class="flex justify-center space-x-60">
+          <div class="flex justify-center space-x-40">
             <div class="w-2/3 bg-white rounded-md overflow-hidden shadow-lg p-5">
               <div class="flex items-start justify-center">
-                <AiFillSchedule size={80} color="#4F46E5" />
+                <AiFillSchedule size={80} color="#4F46E8" />
               </div>
               <div class="px-4 py-4">
                 <h2 class="text-xl font-bold mb-2">Agendamentos</h2>
