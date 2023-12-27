@@ -9,7 +9,7 @@ function NewPet() {
   function createPost(project) {
     // initialize cost and services
 
-    fetch('http://192.168.0.12:8000/pets', {
+    fetch('http://localhost:8000/pets', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

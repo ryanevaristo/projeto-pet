@@ -23,7 +23,7 @@ function PetServices() {
 
     useEffect(() => {
         setTimeout(() => {
-            fetch('http://192.168.0.12:8000/servicos', {
+            fetch('http://localhost:8000/servicos', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ function PetServices() {
     }, [])
 
     function RemovePetServices(id) {
-        fetch(`http://192.168.0.12:8000/servicos/${id}`, {
+        fetch(`http://localhost:8000/servicos/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

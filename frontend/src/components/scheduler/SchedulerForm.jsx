@@ -20,11 +20,11 @@ function SchedulerForm({ handleSubmit, SchedulerData, btnText}) {
 
     useEffect(() => {
         Promise.all([
-            axios.get('http://192.168.0.12:8000/usuarios'),
-            axios.get('http://192.168.0.12:8000/schedulers'),
-            axios.get('http://192.168.0.12:8000/servicos'),
-            axios.get('http://192.168.0.12:8000/horarios'),
-            axios.get('http://192.168.0.12:8000/pets')
+            axios.get('http://localhost:8000/usuarios'),
+            axios.get('http://localhost:8000/schedulers'),
+            axios.get('http://localhost:8000/servicos'),
+            axios.get('http://localhost:8000/horarios'),
+            axios.get('http://localhost:8000/pets')
         ])
         .then(([usuarios, schedulers, servicos, horarios, pets]) => {
             setFunc(usuarios.data);

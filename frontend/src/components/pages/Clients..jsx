@@ -24,7 +24,7 @@ function Clients() {
 
     useEffect(() => {
         setTimeout(() => {
-            fetch('http://192.168.0.12:8000/donos', {
+            fetch('http://localhost:8000/donos', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

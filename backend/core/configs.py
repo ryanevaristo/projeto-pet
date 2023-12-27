@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 class Settings(BaseSettings):
 
-    DB_URL: str = "postgresql+asyncpg://postgres:admin@localhost:5432/agendamento"
+    DB_URL: str = "postgresql+asyncpg://postgres:admin@localhost:5432/agendamentos"
     DB_BASE_MODEL = declarative_base()
 
     JWT_SECRET: str = 'JcyBvNgLOFi9J4ifeeBthZ7C1uzlAVroZQ'

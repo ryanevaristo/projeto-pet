@@ -9,7 +9,7 @@ function NewClient() {
   function createPost(project) {
     // initialize cost and services
 
-    fetch('http://192.168.0.12:8000/donos', {
+    fetch('http://localhost:8000/donos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

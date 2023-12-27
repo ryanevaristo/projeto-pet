@@ -18,7 +18,7 @@ function Client (){
 
     useEffect(() => {
         setTimeout(() => {
-            fetch(`http://192.168.0.12:8000/donos/${id}`, {
+            fetch(`http://localhost:8000/donos/${id}`, {
             method:'GET',
             headers: {
                 'Content-Type' : 'application/json',
@@ -33,7 +33,7 @@ function Client (){
     },[id]);
 
     function editClient(client){
-        fetch(`http://192.168.0.12:8000/donos/${id}`, {
+        fetch(`http://localhost:8000/donos/${id}`, {
             method:'PUT',
             headers: {
                 'Content-Type' : 'application/json',
