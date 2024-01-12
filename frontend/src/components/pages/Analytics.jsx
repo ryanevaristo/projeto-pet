@@ -4,6 +4,9 @@ import Container from '../layout/Container';
 //importe um icone para minhas finanças
 import { RiMoneyDollarCircleFill, RiUser2Fill } from 'react-icons/ri';
 import { AiFillSchedule } from 'react-icons/ai';
+import GraphicOne from '../charts/graphic1'
+import GraphicTwo from '../charts/grapfic2'
+
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -19,7 +22,7 @@ function Analytics() {
             <div
               class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
               <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-              <AiFillSchedule size={50} color="#4F46E8" />
+              <AiFillSchedule size={50} color="#223" />
               </div>
         
               <div class="mt-4 flex items-end justify-between">
@@ -38,7 +41,7 @@ function Analytics() {
             <div
               class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
               <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-              <RiMoneyDollarCircleFill size={50} color="#4F46E5" />
+              <RiMoneyDollarCircleFill size={50} color="#223" />
               </div>
         
               <div class="mt-4 flex items-end justify-between">
@@ -57,7 +60,7 @@ function Analytics() {
             <div
               class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
               <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-              <RiMoneyDollarCircleFill size={50} color="#4F46E5" />
+              <RiMoneyDollarCircleFill size={50} color="#223" />
               </div>
         
               <div class="mt-4 flex items-end justify-between">
@@ -75,7 +78,7 @@ function Analytics() {
             <div
               class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
               <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-              <RiUser2Fill size={50} color="#4F46E5" />
+              <RiUser2Fill size={50} color="#223" />
               </div>
         
               <div class="mt-4 flex items-end justify-between">
@@ -91,6 +94,11 @@ function Analytics() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
+        <GraphicOne/>
+        <GraphicTwo/>
         </div>
       </Container>
 
