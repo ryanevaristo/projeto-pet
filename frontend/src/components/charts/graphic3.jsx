@@ -1,23 +1,24 @@
 import React from 'react';
 
-const GraphicTwo = () => {
+const GraphicThree = () => {
   return (
-    <div className="col-span-12 rounded-sm border border-stroke bg-white p-7.5 shadow-default dark:border-meta-9 dark:bg-white xl:col-span-4">
-      <div className="justify-between gap-4 mb-4 sm:flex">
+    <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-meta-9 dark:bg-white sm:px-7.5 xl:col-span-5">
+      <div className="justify-between gap-4 mb-3 sm:flex">
         <div>
           <h4 className="text-xl font-bold text-black dark:text-black-2">
-          Lucro esta semana
+            
+            Análise de Serviços
           </h4>
         </div>
         <div>
           <div className="relative z-20 inline-block">
             <select
-              name="#"
-              id="#"
+              name=""
+              id=""
               className="relative z-20 inline-flex py-1 pl-3 pr-8 text-sm font-medium bg-transparent outline-none appearance-none"
             >
-              <option value="">Esta semana</option>
-              <option value="">semana passada</option>
+              <option value="">Por mês</option>
+              <option value="">Anual</option>
             </select>
             <span className="absolute z-10 -translate-y-1/2 top-1/2 right-3">
               <svg
@@ -42,12 +43,49 @@ const GraphicTwo = () => {
           </div>
         </div>
       </div>
-
-      <div>
-        <div id="chartTwo" className="-ml-5 -mb-9"></div>
+      <div className="mb-2">
+        <div id="chartThree" className="flex justify-center mx-auto"></div>
+      </div>
+      <div className="flex flex-wrap items-center justify-center -mx-8 gap-y-3">
+        <div className="w-full px-8 sm:w-1/2">
+          <div className="flex items-center w-full">
+            <span className="block w-full h-3 mr-2 rounded-full max-w-3 bg-primary"></span>
+            <p className="flex justify-between w-full text-sm font-medium text-black dark:text-black-2">
+              <span> Banho </span>
+              <span> 65% </span>
+            </p>
+          </div>
+        </div>
+        <div className="w-full px-8 sm:w-1/2">
+          <div className="flex items-center w-full">
+            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#6577F3]"></span>
+            <p className="flex justify-between w-full text-sm font-medium text-black dark:text-black-2">
+              <span> Banho e tosa </span>
+              <span> 34% </span>
+            </p>
+          </div>
+        </div>
+        <div className="w-full px-8 sm:w-1/2">
+          <div className="flex items-center w-full">
+            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#8FD0EF]"></span>
+            <p className="flex justify-between w-full text-sm font-medium text-black dark:text-black-2">
+              <span> Tosa </span>
+              <span> 45% </span>
+            </p>
+          </div>
+        </div>
+        <div className="w-full px-8 sm:w-1/2">
+          <div className="flex items-center w-full">
+            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#0FADCF]"></span>
+            <p className="flex justify-between w-full text-sm font-medium text-black dark:text-black-2">
+              <span> Consultas </span>
+              <span> 12% </span>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default GraphicTwo;
+export default GraphicThree;

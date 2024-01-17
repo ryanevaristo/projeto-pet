@@ -6,6 +6,8 @@ import { RiMoneyDollarCircleFill, RiUser2Fill } from 'react-icons/ri';
 import { AiFillSchedule } from 'react-icons/ai';
 import GraphicOne from '../charts/graphic1'
 import GraphicTwo from '../charts/grapfic2'
+import GraphicThree from '../charts/graphic3';
+import ChatsComponent from '../charts/table1';
 
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,15 +22,15 @@ function Analytics() {
           <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
             
             <div
-              class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
-              <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
+              class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-meta-9 dark:bg-white">
+              <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full dark:bg-meta-4">
               <AiFillSchedule size={50} color="#223" />
               </div>
         
-              <div class="mt-4 flex items-end justify-between">
+              <div class="mt-4 flex items-center justify-center">
                 <div>
                   
-                  <span class="ml-4 px-4 text-sm font-medium">Agendamentos</span>
+                  <span class=" px-4 text-sm font-medium">Agendamentos</span>
                 </div>
         
                 <span class="flex items-center gap-1 text-sm font-medium text-meta-3">
@@ -39,14 +41,14 @@ function Analytics() {
               </div>
             </div>
             <div
-              class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
+              class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-meta-9 dark:bg-white">
               <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
               <RiMoneyDollarCircleFill size={50} color="#223" />
               </div>
         
-              <div class="mt-4 flex items-end justify-between">
+              <div class="mt-4 flex items-center justify-center">
                 <div>
-                  <span class="ml-4 px-4 text-sm font-medium">Faturamento</span>
+                  <span class="px-4 text-sm font-medium">Faturamento</span>
                 </div>
         
                 <span class="flex items-center gap-1 text-sm font-medium text-meta-3">
@@ -58,14 +60,14 @@ function Analytics() {
             </div>
 
             <div
-              class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
+              class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-meta-9 dark:bg-white">
               <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
               <RiMoneyDollarCircleFill size={50} color="#223" />
               </div>
         
-              <div class="mt-4 flex items-end justify-between">
+              <div class="mt-4 flex items-center justify-center">
                 <div>
-                  <span class="ml-4 px-4 text-sm font-medium">Despesas</span>
+                  <span class="px-4 text-sm font-medium">Despesas</span>
                 </div>
         
                 <span class="flex items-center gap-1 text-sm font-medium text-meta-3">
@@ -76,14 +78,14 @@ function Analytics() {
               </div>
             </div>
             <div
-              class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
+              class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-meta-9 dark:bg-white">
               <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
               <RiUser2Fill size={50} color="#223" />
               </div>
         
-              <div class="mt-4 flex items-end justify-between">
+              <div class="mt-4 flex items-center justify-center">
                 <div>                  
-                  <span class="ml-4 px-4 text-sm font-medium">Usuários</span>
+                  <span class="px-4 text-sm font-medium">Usuários</span>
                 </div>        
                 <span class="flex items-center gap-1 text-sm font-medium text-meta-5">
                 <h4 class=" ml-4 px-4 text-title-md font-bold text-black dark:text-black">
@@ -99,7 +101,10 @@ function Analytics() {
         <div class="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
         <GraphicOne/>
         <GraphicTwo/>
+        <GraphicThree/>
+        <ChatsComponent/>
         </div>
+        
       </Container>
 
 

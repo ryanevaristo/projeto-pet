@@ -2,7 +2,7 @@ import React from 'react';
 
 const GraphicOne = () => {
   return (
-    <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8">
+    <div className="col-span-80 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-20 shadow-default dark:border-meta-9 dark:bg-white sm:px-7.5 xl:col-span-8">
       <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
         <div className="flex flex-wrap w-full gap-3 sm:gap-5">
           <div className="flex min-w-47.5">
@@ -26,13 +26,13 @@ const GraphicOne = () => {
         </div>
         <div className="flex justify-end w-full max-w-45">
           <div className="inline-flex items-center rounded-md bg-whiter p-1.5 dark:bg-meta-4">
-            <button className="px-3 py-1 text-xs font-medium text-black bg-white rounded shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark">
+            <button className="px-3 py-1 text-xs font-medium text-black rounded bg-custom shadow-card hover:bg-black dark:text-white dark:hover:bg-boxdr">
               Day
             </button>
-            <button className="px-3 py-1 text-xs font-medium text-black rounded hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
+            <button className="px-3 py-1 text-xs font-medium text-black rounded bg-custom shadow-card hover:bg-black dark:text-white dark:hover:bg-boxdr">
               Week
             </button>
-            <button className="px-3 py-1 text-xs font-medium text-black rounded hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
+            <button className="px-3 py-1 text-xs font-medium text-black rounded bg-custom hover:shadow-card hover:bg-black dark:text-white dark:hover:bg-boxdark">
               Month
             </button>
           </div>
